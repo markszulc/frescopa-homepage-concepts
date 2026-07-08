@@ -165,9 +165,8 @@ html { scroll-behavior: smooth; }
   position: absolute; z-index: 2; inset: 0; pointer-events: none;
   background:
     linear-gradient(180deg, color-mix(in oklch, var(--burgundy-deep) 55%, transparent), transparent 12%),
-    linear-gradient(90deg, var(--burgundy) 0%, var(--burgundy) 28%,
-      color-mix(in oklch, var(--burgundy) 80%, transparent) 50%,
-      color-mix(in oklch, var(--burgundy) 26%, transparent) 66%, transparent 74%),
+    linear-gradient(90deg, var(--burgundy) 0%, var(--burgundy) 52%,
+      color-mix(in oklch, var(--burgundy) 55%, transparent) 60%, transparent 68%),
     linear-gradient(0deg, color-mix(in oklch, var(--burgundy-deep) 62%, transparent), transparent 30%);
 }
 .craft .hero__inner {
