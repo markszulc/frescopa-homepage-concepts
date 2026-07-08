@@ -165,6 +165,28 @@
     document.querySelectorAll("[data-year]").forEach(function (e) { e.textContent = y; });
   }
 
+  /* ---- Hover-to-play video reveal ---- */
+  function initHoverVideo() {
+    if (reduce) return; // respect prefers-reduced-motion: keep the still image only
+    document.querySelectorAll("[data-hover-video]").forEach(function (el) {
+      var video = el.querySelector("video");
+      if (!video) return;
+      video.muted = true; // required for autoplay-on-hover across browsers
+      function start() {
+        el.classList.add("is-playing");
+        var p = video.play();
+        if (p && p.catch) p.catch(function () {}); // ignore autoplay rejection
+      }
+      function stop() {
+        el.classList.remove("is-playing");
+        video.pause();
+        video.currentTime = 0; // reset so the still and next hover always match frame one
+      }
+      el.addEventListener("mouseenter", start);
+      el.addEventListener("mouseleave", stop);
+    });
+  }
+
   function init() {
     initReveal();
     initHeader();
@@ -172,6 +194,7 @@
     initCalendar();
     initParallax();
     initYear();
+    initHoverVideo();
   }
 
   if (document.readyState === "loading") {
