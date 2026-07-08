@@ -396,7 +396,7 @@ html { scroll-behavior: smooth; }
 .craft .link--sm { font-size: 0.85rem; }
 
 /* Featured tile — drenched burgundy for internal contrast */
-.craft .card--feature { background: var(--burgundy); border-color: var(--burgundy); color: var(--cream); }
+.craft .card--feature { background: var(--burgundy); border: none; color: var(--cream); }
 .craft .card--feature .card__media { aspect-ratio: auto; flex: 1; min-height: 250px; }
 .craft .card--feature .card__body { padding: clamp(1.4rem, 2.5vw, 2rem); flex: none; }
 .craft .card--feature .card__kicker { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); }
