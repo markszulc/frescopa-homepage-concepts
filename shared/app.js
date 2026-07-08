@@ -113,13 +113,21 @@
 
         days.forEach(function (d) { d.addEventListener("click", stopCycle); });
 
-        if ("IntersectionObserver" in window) {
+        var alreadyOnScreen = function () {
+          var r = cal.getBoundingClientRect();
+          var vh = window.innerHeight || document.documentElement.clientHeight;
+          return r.top < vh && r.bottom > 0;
+        };
+
+        if (alreadyOnScreen()) {
+          scheduleCycle();
+        } else if ("IntersectionObserver" in window) {
           var demoObs = new IntersectionObserver(function (e) {
             if (e[0].isIntersecting) {
               scheduleCycle();
               demoObs.disconnect();
             }
-          }, { threshold: 0.5 });
+          }, { threshold: 0 });
           demoObs.observe(cal);
         } else {
           scheduleCycle();
