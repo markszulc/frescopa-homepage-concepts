@@ -92,6 +92,39 @@
       });
       var initial = cal.querySelector("[data-day].is-active") || days[0];
       activate(initial);
+
+      // optional auto-demo: loop through days every ~3s until the user
+      // takes over, at which point the cycle stops for good.
+      if (cal.hasAttribute("data-autocycle") && !reduce) {
+        var cycleIdx = Math.max(0, days.indexOf(initial));
+        var cycleTimer = null;
+
+        var stopCycle = function () {
+          if (cycleTimer) { clearTimeout(cycleTimer); cycleTimer = null; }
+        };
+
+        var scheduleCycle = function () {
+          cycleTimer = setTimeout(function () {
+            cycleIdx = (cycleIdx + 1) % days.length;
+            activate(days[cycleIdx]);
+            scheduleCycle();
+          }, 3000);
+        };
+
+        days.forEach(function (d) { d.addEventListener("click", stopCycle); });
+
+        if ("IntersectionObserver" in window) {
+          var demoObs = new IntersectionObserver(function (e) {
+            if (e[0].isIntersecting) {
+              scheduleCycle();
+              demoObs.disconnect();
+            }
+          }, { threshold: 0.5 });
+          demoObs.observe(cal);
+        } else {
+          scheduleCycle();
+        }
+      }
     });
   }
 

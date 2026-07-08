@@ -221,21 +221,37 @@
       go(activeKey, true);
     }
 
-    // optional auto-demo: cycle once through profiles after first reveal
+    // optional auto-demo: loop through profiles every ~3s until the user
+    // takes over, at which point the cycle stops for good.
     if (container.hasAttribute("data-autocycle") && !reduceMotion) {
-      var idx = 0, started = false;
-      var demoObs = new IntersectionObserver(function (e) {
-        if (e[0].isIntersecting && !started) {
-          started = true;
-          setTimeout(function tick() {
-            idx = (idx + 1) % order.length;
-            go(order[idx]);
-            if (idx !== 0) setTimeout(tick, 2600);
-          }, 2600);
-          demoObs.disconnect();
-        }
-      }, { threshold: 0.5 });
-      demoObs.observe(container);
+      var cycleIdx = Math.max(0, order.indexOf(activeKey));
+      var cycleTimer = null;
+
+      function stopCycle() {
+        if (cycleTimer) { clearTimeout(cycleTimer); cycleTimer = null; }
+      }
+
+      function scheduleCycle() {
+        cycleTimer = setTimeout(function () {
+          cycleIdx = (cycleIdx + 1) % order.length;
+          go(order[cycleIdx]);
+          scheduleCycle();
+        }, 3000);
+      }
+
+      buttons.forEach(function (b) { b.addEventListener("click", stopCycle); });
+
+      if ("IntersectionObserver" in window) {
+        var demoObs = new IntersectionObserver(function (e) {
+          if (e[0].isIntersecting) {
+            scheduleCycle();
+            demoObs.disconnect();
+          }
+        }, { threshold: 0.5 });
+        demoObs.observe(container);
+      } else {
+        scheduleCycle();
+      }
     }
   }
 
