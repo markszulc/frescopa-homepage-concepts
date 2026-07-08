@@ -9,7 +9,12 @@
 
 html { scroll-behavior: smooth; }
 .craft section[id] { scroll-margin-top: 84px; }
-.craft { background: var(--paper); }
+.craft {
+  --font-display: "Figtree", system-ui, sans-serif;
+  --font-body: "Figtree", system-ui, sans-serif;
+  --font-mono: "Figtree", system-ui, sans-serif;
+  background: var(--paper);
+}
 .craft main > section { position: relative; }
 
 /* Section rhythm — deliberate light / drenched alternation */
@@ -200,7 +205,7 @@ html { scroll-behavior: smooth; }
 }
 .craft .hero__title > * { display: block; }
 .craft .hero__title-2 { padding-left: 0.5em; }
-.craft .hero__title-3 { font-style: italic; font-weight: 600; color: var(--amber); }
+.craft .hero__title-3 { font-style: normal; font-weight: 800; color: var(--amber); }
 .craft .hero__lead {
   color: var(--cream); opacity: 0.92; font-size: var(--fs-body-lg);
   max-width: 42ch; margin-top: clamp(1.2rem, 2.5vw, 1.9rem); line-height: 1.55;
@@ -245,7 +250,7 @@ html { scroll-behavior: smooth; }
   font-family: var(--font-display); font-size: var(--fs-h1); font-weight: 800;
   line-height: 0.98; letter-spacing: -0.02em; color: var(--burgundy); margin-top: 1.4rem;
 }
-.craft .intro__statement em { font-style: italic; font-weight: 600; color: var(--terracotta); }
+.craft .intro__statement em { font-style: normal; font-weight: 800; color: var(--terracotta); }
 .craft .intro__body { color: var(--ink-soft); font-size: var(--fs-body-lg); max-width: 46ch; margin-top: 1.5rem; }
 .craft .intro__copy .link { margin-top: 1.6rem; }
 
@@ -257,7 +262,7 @@ html { scroll-behavior: smooth; }
   color: var(--cream); font-family: var(--font-display); font-size: var(--fs-h1);
   line-height: 1; letter-spacing: -0.02em; margin-top: 1rem;
 }
-.craft .learn__title em { font-style: italic; font-weight: 600; color: var(--amber); }
+.craft .learn__title em { font-style: normal; font-weight: 800; color: var(--amber); }
 
 .craft .dna {
   --dna-grid: color-mix(in oklch, var(--cream) 12%, transparent);
@@ -307,7 +312,7 @@ html { scroll-behavior: smooth; }
    ============================================================ */
 .craft .mood__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 5rem); align-items: center; }
 .craft .mood__title { font-family: var(--font-display); font-size: var(--fs-h1); color: var(--burgundy); line-height: 1; letter-spacing: -0.02em; margin-top: 1rem; }
-.craft .mood__title em { font-style: italic; font-weight: 600; color: var(--terracotta); }
+.craft .mood__title em { font-style: normal; font-weight: 800; color: var(--terracotta); }
 .craft .mood__hint {
   display: inline-flex; align-items: center; gap: 0.6em; margin-top: 1.6rem;
   font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.08em;
@@ -350,7 +355,7 @@ html { scroll-behavior: smooth; }
   margin-bottom: clamp(2.2rem, 4vw, 3.2rem);
 }
 .craft .feed__title { font-family: var(--font-display); font-size: var(--fs-h1); color: var(--burgundy); line-height: 1; letter-spacing: -0.02em; margin-top: 1rem; }
-.craft .feed__title em { font-style: italic; font-weight: 600; color: var(--terracotta); }
+.craft .feed__title em { font-style: normal; font-weight: 800; color: var(--terracotta); }
 .craft .feed__intro { color: var(--ink-soft); font-size: var(--fs-body-lg); max-width: 42ch; }
 
 .craft .feed__grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(1.2rem, 2.4vw, 1.8rem); }
@@ -396,7 +401,7 @@ html { scroll-behavior: smooth; }
    ============================================================ */
 .craft .sustain__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 5rem); align-items: center; }
 .craft .sustain__title { color: var(--cream); font-family: var(--font-display); font-size: var(--fs-h1); line-height: 1; letter-spacing: -0.02em; margin-top: 1rem; }
-.craft .sustain__title em { font-style: italic; font-weight: 600; color: var(--amber); }
+.craft .sustain__title em { font-style: normal; font-weight: 800; color: var(--amber); }
 .craft .sustain .frame { aspect-ratio: 5 / 4; }
 .craft .chips { list-style: none; padding: 0; margin: 1.8rem 0 0; display: flex; flex-wrap: wrap; gap: 0.6rem; }
 .craft .chips li {
@@ -417,11 +422,11 @@ html { scroll-behavior: smooth; }
   color: color-mix(in oklch, var(--terracotta) 42%, transparent);
 }
 .craft .voices__lead p { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.9rem, 1.2rem + 2.8vw, 3.4rem); line-height: 1.14; color: var(--burgundy); }
-.craft .voices__lead em { font-style: italic; color: var(--terracotta); }
+.craft .voices__lead em { font-style: normal; font-weight: 800; color: var(--terracotta); }
 .craft .voices__lead cite, .craft .voices__item cite { display: block; margin-top: 1.1rem; font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--terracotta); font-style: normal; }
 .craft .voices__figure { aspect-ratio: 4 / 5; }
 .craft .voices__more { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); margin-top: clamp(2.4rem, 5vw, 3.6rem); padding-top: clamp(2rem, 4vw, 3rem); border-top: 1px solid var(--line); }
-.craft .voices__item p { font-family: var(--font-display); font-style: italic; font-weight: 500; font-size: 1.4rem; line-height: 1.4; color: var(--ink); }
+.craft .voices__item p { font-family: var(--font-display); font-style: normal; font-weight: 600; font-size: 1.4rem; line-height: 1.4; color: var(--ink); }
 
 /* ============================================================
    07 · Café band
@@ -437,7 +442,7 @@ html { scroll-behavior: smooth; }
 }
 .craft .cafe__inner { position: relative; z-index: 1; max-width: 640px; color: var(--cream); padding-block: clamp(3.5rem, 7vw, 5.5rem); }
 .craft .cafe__title { color: var(--cream); font-family: var(--font-display); font-size: var(--fs-h2); line-height: 1.05; margin-top: 1rem; }
-.craft .cafe__title em { font-style: italic; font-weight: 600; color: var(--amber); }
+.craft .cafe__title em { font-style: normal; font-weight: 800; color: var(--amber); }
 .craft .cafe__body { color: color-mix(in oklch, var(--cream) 90%, transparent); margin: 1.1rem 0 1.9rem; max-width: 46ch; }
 
 /* ============================================================
@@ -452,7 +457,7 @@ html { scroll-behavior: smooth; }
 }
 .craft .cta__eyebrow { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.24em; text-transform: uppercase; color: color-mix(in oklch, var(--cream) 88%, transparent); }
 .craft .cta__promise { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.4rem, 1.3rem + 4.6vw, 5rem); line-height: 1.04; color: var(--cream); max-width: 18ch; margin: 1rem auto 0; }
-.craft .cta__promise em { font-style: italic; color: var(--amber); }
+.craft .cta__promise em { font-style: normal; font-weight: 800; color: var(--amber); }
 .craft .cta__sub { color: color-mix(in oklch, var(--cream) 92%, transparent); font-size: var(--fs-body-lg); margin: 1.4rem auto 2.3rem; max-width: 42ch; }
 .craft .cta__actions { display: flex; gap: 0.9rem; justify-content: center; flex-wrap: wrap; }
 
