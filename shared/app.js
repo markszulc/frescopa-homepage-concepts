@@ -165,13 +165,24 @@
     document.querySelectorAll("[data-year]").forEach(function (e) { e.textContent = y; });
   }
 
-  /* ---- Hover-to-play video reveal ---- */
+  /* ---- Hover-to-play video reveal (autoplays instead, below the mobile breakpoint) ---- */
   function initHoverVideo() {
     if (reduce) return; // respect prefers-reduced-motion: keep the still image only
+    var isTouch = window.matchMedia("(max-width: 900px)").matches;
     document.querySelectorAll("[data-hover-video]").forEach(function (el) {
       var video = el.querySelector("video");
       if (!video) return;
-      video.muted = true; // required for autoplay-on-hover across browsers
+      video.muted = true; // required for autoplay across browsers
+
+      if (isTouch) {
+        // no hover on mobile: crossfade in only once the clip actually starts,
+        // so a blocked autoplay just leaves the still showing instead of a blank frame
+        video.addEventListener("playing", function () { el.classList.add("is-playing"); }, { once: true });
+        var auto = video.play();
+        if (auto && auto.catch) auto.catch(function () {});
+        return;
+      }
+
       function start() {
         el.classList.add("is-playing");
         var p = video.play();
