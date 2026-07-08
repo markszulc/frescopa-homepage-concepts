@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fréscopa — Home page concepts</title>
+  <meta name="description" content="Three home page directions for the Fréscopa Atelier, each built on one fresh design system. Ritual, meet intelligence." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%235b1c22'/%3E%3Cpath d='M11 9c4 0 8 3 8 8s-4 6-8 6' fill='none' stroke='%23eaa33a' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;0,900;1,500;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared/tokens.css" />
+  <link rel="stylesheet" href="index.css" />
+  <script defer src="shared/app.js"></script>
+</head>
+<body class="home">
+  <a class="skip-link" href="#concepts">Skip to concepts</a>
+
+  <header class="home-header" data-header>
+    <div class="container home-header__inner">
+      <a class="home-header__brand" href="#" aria-label="Fréscopa">
+        <img src="assets/frescopa-logo.svg" alt="Fréscopa" width="150" height="40" />
+      </a>
+      <span class="home-header__label">Home page concepts · 2026</span>
+    </div>
+  </header>
+
+  <main>
+    <!-- Cover -->
+    <section class="cover">
+      <div class="container cover__inner">
+        <p class="eyebrow reveal">Three directions · one system</p>
+        <h1 class="cover__title reveal" style="--reveal-delay:.08s">Ritual, <em>meet intelligence.</em></h1>
+        <p class="cover__lead reveal" style="--reveal-delay:.16s">Three home page concepts for the Fréscopa Atelier, the coffee machine that learns your taste and reads your mornings. Each is built on a single, fresh design system, so they share Fréscopa's warmth and voice while telling the story three distinct ways.</p>
+        <p class="cover__meta reveal" style="--reveal-delay:.24s">
+          <span>Warm editorial</span><span>Gallery minimal</span><span>Bold &amp; art-directed</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- Concept picker -->
+    <section class="concepts" id="concepts">
+      <div class="container">
+        <div class="concepts__grid">
+
+          <a class="concept reveal" href="directions/01-atelier/index.html">
+            <div class="concept__media">
+              <img src="assets/images/hero-machine.jpg" alt="The Atelier machine in warm morning light." width="1408" height="768" loading="lazy" />
+            </div>
+            <div class="concept__body">
+              <span class="concept__index">01</span>
+              <div class="concept__text">
+                <p class="concept__kicker">Warm editorial</p>
+                <h2 class="concept__name">The Atelier</h2>
+                <p class="concept__desc">The flagship. Golden light, generous space, and the machine as hero. Rich, welcoming, unmistakably premium.</p>
+                <span class="concept__cta">View this direction <span class="arrow" aria-hidden="true">→</span></span>
+              </div>
+            </div>
+          </a>
+
+          <a class="concept reveal" href="directions/02-quiet-ritual/index.html" style="--reveal-delay:.1s">
+            <div class="concept__media">
+              <img src="assets/images/latte-art.jpg" alt="A flat white with rosetta latte art, framed like a print." width="1408" height="768" loading="lazy" />
+            </div>
+            <div class="concept__body">
+              <span class="concept__index">02</span>
+              <div class="concept__text">
+                <p class="concept__kicker">Gallery minimal</p>
+                <h2 class="concept__name">Quiet Ritual</h2>
+                <p class="concept__desc">Restraint and air. Photography framed like prints, quiet luxury, one considered idea at a time.</p>
+                <span class="concept__cta">View this direction <span class="arrow" aria-hidden="true">→</span></span>
+              </div>
+            </div>
+          </a>
+
+          <a class="concept reveal" href="directions/03-craft-current/index.html" style="--reveal-delay:.2s">
+            <div class="concept__media">
+              <img src="assets/images/espresso-pour.jpg" alt="A bold shot of espresso pouring, full of energy." width="1408" height="768" loading="lazy" />
+            </div>
+            <div class="concept__body">
+              <span class="concept__index">03</span>
+              <div class="concept__text">
+                <p class="concept__kicker">Bold &amp; art-directed</p>
+                <h2 class="concept__name">Craft &amp; Current</h2>
+                <p class="concept__desc">Confident and expressive. Oversized type, drenched colour, and the machine's intelligence shown with real flair.</p>
+                <span class="concept__cta">View this direction <span class="arrow" aria-hidden="true">→</span></span>
+              </div>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- The system -->
+    <section class="system">
+      <div class="container">
+        <div class="system__head reveal">
+          <p class="eyebrow">One design system</p>
+          <h2 class="system__title">Built once, expressed three ways.</h2>
+          <p class="system__lead">Every direction draws from the same tokens, the same warm palette, and the same type. It is written in plain HTML, CSS, and JavaScript, ready to lift into Edge Delivery Services.</p>
+        </div>
+
+        <div class="system__cols">
+          <div class="swatches reveal">
+            <div class="swatch" style="background: var(--burgundy); color: var(--cream);"><span>Burgundy</span></div>
+            <div class="swatch" style="background: var(--terracotta); color: var(--cream);"><span>Terracotta</span></div>
+            <div class="swatch" style="background: var(--amber); color: var(--burgundy-deep);"><span>Amber</span></div>
+            <div class="swatch" style="background: var(--paper-3); color: var(--ink);"><span>Cream</span></div>
+            <div class="swatch" style="background: var(--charcoal); color: var(--cream);"><span>Charcoal</span></div>
+          </div>
+
+          <ul class="typeset reveal" style="--reveal-delay:.1s">
+            <li>
+              <span class="typeset__sample" style="font-family: var(--font-display); font-weight: 700;">Aa</span>
+              <span class="typeset__meta"><strong>Playfair Display</strong>Headlines &amp; brand promises</span>
+            </li>
+            <li>
+              <span class="typeset__sample" style="font-family: var(--font-body); font-weight: 500;">Aa</span>
+              <span class="typeset__meta"><strong>DM Sans</strong>Body &amp; interface</span>
+            </li>
+            <li>
+              <span class="typeset__sample" style="font-family: var(--font-mono);">Aa</span>
+              <span class="typeset__meta"><strong>DM Mono</strong>Labels &amp; eyebrows</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="home-footer">
+    <div class="container home-footer__inner">
+      <img src="assets/frescopa-logo-light.svg" alt="Fréscopa" width="150" height="40" />
+      <p class="home-footer__meta">© <span data-year>2026</span> Fréscopa · A fictional brand, created for demonstration. Concepts by design, built for Edge Delivery Services.</p>
+    </div>
+  </footer>
+</body>
+</html>

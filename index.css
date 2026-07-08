@@ -1,0 +1,92 @@
+/* ============================================================
+   Fréscopa — Concept picker (root presentation page)
+   The "cover" that frames three directions on one system.
+   ============================================================ */
+
+.home { background: var(--paper); }
+
+/* ---- Header ---- */
+.home-header {
+  position: sticky; top: 0; z-index: 100;
+  background: color-mix(in oklch, var(--paper) 88%, transparent);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.home-header__inner { display: flex; align-items: center; justify-content: space-between; padding-block: 1rem; gap: 1rem; }
+.home-header__brand { line-height: 0; }
+.home-header__brand img { height: 30px; width: auto; }
+.home-header__label { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); }
+
+/* ---- Cover ---- */
+.cover { padding-block: clamp(4rem, 4rem + 7vw, 9rem) clamp(3rem, 3rem + 4vw, 6rem); position: relative; overflow: hidden; }
+.cover::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(60% 60% at 88% 0%, color-mix(in oklch, var(--amber) 16%, transparent), transparent 70%),
+    radial-gradient(50% 60% at 0% 100%, color-mix(in oklch, var(--terracotta) 12%, transparent), transparent 70%);
+}
+.cover__inner { position: relative; z-index: 1; max-width: 940px; }
+.cover__title { font-size: var(--fs-h1); font-weight: 800; line-height: var(--lh-tight); margin-top: 1.2rem; }
+.cover__title em { font-style: italic; font-weight: 600; color: var(--terracotta); }
+.cover__lead { color: var(--ink-soft); font-size: var(--fs-body-lg); max-width: 60ch; margin-top: 1.6rem; }
+.cover__meta { display: flex; flex-wrap: wrap; gap: 1.4rem; margin-top: 2.2rem; }
+.cover__meta span { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--burgundy); display: inline-flex; align-items: center; gap: 1.4rem; }
+.cover__meta span:not(:last-child)::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--amber); }
+
+/* ---- Concepts ---- */
+.concepts { padding-bottom: var(--section-y); }
+.concepts__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1.2rem, 2.5vw, 2rem); }
+.concept {
+  display: flex; flex-direction: column;
+  background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-xl); overflow: hidden;
+  transition: transform var(--dur-2) var(--ease-quint), box-shadow var(--dur-2) var(--ease-quint), border-color var(--dur-2);
+}
+.concept:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: color-mix(in oklch, var(--terracotta) 40%, var(--line)); }
+.concept__media { aspect-ratio: 5 / 4; overflow: hidden; }
+.concept__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.9s var(--ease-quint); }
+.concept:hover .concept__media img { transform: scale(1.06); }
+.concept__body { display: flex; gap: 1rem; padding: 1.5rem 1.6rem 1.7rem; flex: 1; }
+.concept__index { font-family: var(--font-mono); font-size: 0.9rem; color: var(--terracotta); padding-top: 0.35rem; letter-spacing: 0.05em; }
+.concept__kicker { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); }
+.concept__name { font-size: 1.7rem; font-weight: 700; margin-top: 0.35rem; }
+.concept__desc { color: var(--ink-soft); font-size: 0.96rem; margin-top: 0.7rem; }
+.concept__cta { display: inline-flex; align-items: center; gap: 0.45em; margin-top: 1.1rem; font-weight: 600; font-size: 0.92rem; color: var(--terracotta); }
+.concept__cta .arrow { transition: transform var(--dur-1) var(--ease-quint); }
+.concept:hover .concept__cta .arrow { transform: translateX(4px); }
+
+/* ---- The system ---- */
+.system { background: var(--paper-2); padding-block: var(--section-y); border-top: 1px solid var(--line); }
+.system__head { max-width: 640px; }
+.system__title { font-size: var(--fs-h2); margin-top: 1rem; }
+.system__lead { color: var(--ink-soft); font-size: var(--fs-body-lg); margin-top: 1.1rem; }
+.system__cols { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; margin-top: clamp(2.5rem, 5vw, 3.5rem); }
+
+.swatches { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--shadow-md); }
+.swatch { min-height: 132px; display: flex; align-items: flex-end; padding: 0.8rem; }
+.swatch span { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; }
+
+.typeset { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.2rem; }
+.typeset li { display: flex; align-items: center; gap: 1.3rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--line); }
+.typeset li:last-child { border-bottom: 0; padding-bottom: 0; }
+.typeset__sample { font-size: 2.8rem; line-height: 1; color: var(--burgundy); width: 1.6em; text-align: center; }
+.typeset__meta { display: flex; flex-direction: column; gap: 0.2rem; font-size: 0.92rem; color: var(--ink-soft); }
+.typeset__meta strong { color: var(--ink); font-family: var(--font-body); font-weight: 600; }
+
+/* ---- Footer ---- */
+.home-footer { background: var(--charcoal); color: var(--cream-soft); padding-block: 2.5rem; }
+.home-footer__inner { display: flex; align-items: center; justify-content: space-between; gap: 1.2rem; flex-wrap: wrap; }
+.home-footer__inner img { height: 34px; width: auto; }
+.home-footer__meta { font-size: 0.82rem; color: var(--cream-soft); opacity: 0.85; }
+
+/* ---- Responsive ---- */
+@media (max-width: 960px) {
+  .concepts__grid { grid-template-columns: 1fr; max-width: 560px; margin-inline: auto; }
+  .concept { flex-direction: column; }
+  .concept__media { aspect-ratio: 16 / 10; }
+  .system__cols { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .swatch { min-height: 96px; }
+  .swatch span { font-size: 0.6rem; }
+  .home-footer__inner { justify-content: flex-start; }
+}

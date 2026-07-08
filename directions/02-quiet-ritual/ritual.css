@@ -1,0 +1,559 @@
+/* ============================================================
+   DIRECTION 2 — "Quiet Ritual"
+   Gallery-minimal. Cream canvas, whitespace as the hero, warm
+   photography framed as prints, hairline rules over cards,
+   whispers of terracotta and amber. Refined, meditative, still.
+   Everything is scoped under .ritual.
+   ============================================================ */
+
+html { scroll-behavior: smooth; }
+
+.ritual {
+  /* slower, airier vertical rhythm than the flagship */
+  --ritual-section-y: clamp(5.5rem, 3.5rem + 8vw, 12rem);
+  /* mat tone for framed prints: same cream as the "wall", so the print
+     reads through two concentric hairlines and negative space, not a fill */
+  --mat: var(--paper);
+}
+
+.ritual section[id] { scroll-margin-top: 96px; }
+
+/* Lighten the display type across the whole direction: quiet luxury
+   prefers a lighter Playfair weight than the flagship's heavy 800. */
+.ritual h1, .ritual h2, .ritual h3, .ritual h4 { font-weight: 600; }
+.ritual h1, .ritual h2 { letter-spacing: -0.015em; }
+
+/* One continuous cream canvas; sections separated by air + hairlines. */
+.ritual main > section { position: relative; }
+.ritual .intro,
+.ritual .learn,
+.ritual .mood,
+.ritual .feed,
+.ritual .sustain,
+.ritual .voices,
+.ritual .cafe { padding-block: var(--ritual-section-y); }
+
+/* ============================================================
+   Header — quiet, light, dark ink on cream
+   ============================================================ */
+.ritual .header {
+  position: fixed; inset: 0 0 auto 0; z-index: 100;
+  color: var(--ink);
+  transition: transform var(--dur-2) var(--ease-quint),
+              background-color var(--dur-2) var(--ease-quint),
+              box-shadow var(--dur-2) var(--ease-quint);
+}
+.ritual .header__inner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.5rem; padding-block: 1.15rem;
+}
+.ritual .header.is-scrolled {
+  background: color-mix(in oklch, var(--paper) 90%, transparent);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  box-shadow: 0 1px 0 var(--line);
+}
+.ritual .header.is-hidden { transform: translateY(-100%); }
+
+.ritual .header__brand { display: block; line-height: 0; }
+.ritual .header__logo { height: 30px; width: auto; }
+
+.ritual .nav { display: flex; align-items: center; gap: clamp(1.2rem, 2.2vw, 2.6rem); }
+.ritual .nav a {
+  font-size: 0.9rem; font-weight: 500; letter-spacing: 0.01em;
+  color: var(--ink-soft); position: relative; padding: 0.2rem 0;
+  transition: color var(--dur-1) var(--ease-quint);
+}
+.ritual .nav a::after {
+  content: ""; position: absolute; left: 0; bottom: -3px; height: 1px; width: 0;
+  background: var(--terracotta); transition: width var(--dur-2) var(--ease-quint);
+}
+.ritual .nav a:hover { color: var(--burgundy); }
+.ritual .nav a:hover::after { width: 100%; }
+
+.ritual .header__utils { display: flex; align-items: center; gap: 0.25rem; }
+.ritual .iconbtn {
+  display: inline-grid; place-items: center; width: 40px; height: 40px;
+  border-radius: 50%; color: var(--ink-soft);
+  transition: color var(--dur-1) var(--ease-quint), background-color var(--dur-1) var(--ease-quint);
+}
+.ritual .iconbtn:hover { color: var(--burgundy); background: color-mix(in oklch, var(--ink) 6%, transparent); }
+
+.ritual .nav-toggle { display: none; width: 42px; height: 42px; border-radius: 50%; position: relative; }
+.ritual .nav-toggle span {
+  position: absolute; left: 11px; width: 20px; height: 1.6px; background: var(--ink);
+  border-radius: 2px; transition: transform var(--dur-1) var(--ease-quint), opacity var(--dur-1);
+}
+.ritual .nav-toggle span:first-child { top: 18px; }
+.ritual .nav-toggle span:last-child { top: 24px; }
+.ritual .nav-toggle[aria-expanded="true"] span:first-child { transform: translateY(3px) rotate(45deg); }
+.ritual .nav-toggle[aria-expanded="true"] span:last-child { transform: translateY(-3px) rotate(-45deg); }
+
+/* ============================================================
+   Framed print — the recurring gallery device
+   Outer frame + cream mat + hairline window + mono caption.
+   No shadows: presence comes from hairlines and negative space.
+   ============================================================ */
+.ritual .plate { margin: 0; }
+.ritual .plate__frame {
+  border: 1px solid var(--line);
+  background: var(--mat);
+  padding: clamp(0.75rem, 1.7vw, 1.4rem);
+}
+.ritual .plate__frame--thin { padding: clamp(0.5rem, 1vw, 0.7rem); }
+.ritual .plate__window {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--paper-2);
+}
+.ritual .plate__window img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.ritual .plate__window--portrait  { aspect-ratio: 4 / 5; }
+.ritual .plate__window--square     { aspect-ratio: 1 / 1; }
+.ritual .plate__window--landscape  { aspect-ratio: 5 / 4; }
+.ritual .plate__window--wide       { aspect-ratio: 3 / 2; }
+
+/* subtle print-in-frame parallax: give the image vertical slack so the
+   transform (set by shared app.js) never uncovers the window edges. */
+.ritual .plate--parallax .plate__window img {
+  height: calc(100% + 56px);
+  margin-block: -28px;
+}
+
+.ritual .plate__cap {
+  margin-top: 0.95rem;
+  display: flex; align-items: baseline; gap: 0.7em; flex-wrap: wrap;
+  font-family: var(--font-mono); font-size: 0.72rem;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft);
+}
+.ritual .plate__fig { color: var(--terracotta); }
+.ritual .plate__ttl { color: var(--ink-soft); }
+
+/* ============================================================
+   Section marker — chapter spine (index + label on a hairline,
+   with a warm amber tick to start each rule)
+   ============================================================ */
+.ritual .marker {
+  position: relative;
+  display: flex; align-items: baseline; gap: 1rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1rem;
+  margin-bottom: clamp(2.6rem, 5vw, 4.8rem);
+  font-family: var(--font-mono); font-size: 0.72rem;
+  letter-spacing: 0.14em; text-transform: uppercase;
+}
+.ritual .marker::before {
+  content: ""; position: absolute; top: -1px; left: 0;
+  width: 2.4rem; height: 1px; background: var(--amber);
+}
+.ritual .marker__no { color: var(--terracotta); }
+.ritual .marker__label { color: var(--ink-soft); }
+
+/* Shared lede treatment */
+.ritual .lede {
+  color: var(--ink-soft); font-size: var(--fs-body-lg);
+  line-height: 1.6; margin-top: 1.2rem; max-width: 46ch;
+}
+
+/* ============================================================
+   Hero — calm asymmetric split, headline in air + a framed print
+   ============================================================ */
+.ritual .hero {
+  position: relative;
+  min-height: min(92vh, 940px);
+  display: flex; align-items: center;
+  padding-top: clamp(7rem, 12vh, 9.5rem);
+  padding-bottom: clamp(4rem, 9vh, 7rem);
+}
+.ritual .hero__inner {
+  display: grid; grid-template-columns: 1.02fr 0.98fr;
+  gap: clamp(2rem, 6vw, 6rem); align-items: center; width: 100%;
+}
+.ritual .hero__title {
+  font-size: clamp(2.7rem, 2rem + 3.4vw, 4.7rem);
+  line-height: var(--lh-tight); color: var(--burgundy);
+  margin-top: 1.1rem;
+}
+.ritual .hero__promise {
+  font-family: var(--font-display); font-style: italic; font-weight: 500;
+  font-size: var(--fs-h4); color: var(--terracotta);
+  margin-top: 1.3rem;
+}
+.ritual .hero__lead {
+  color: var(--ink-soft); font-size: var(--fs-body-lg);
+  line-height: 1.6; max-width: 46ch; margin-top: 1.1rem;
+}
+.ritual .hero__actions { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 2rem; }
+
+.ritual .hero__meta {
+  display: flex; flex-wrap: wrap; gap: 0; margin: 2.6rem 0 0;
+  border-top: 1px solid var(--line);
+}
+.ritual .hero__meta > div {
+  padding: 1rem 1.6rem 0 0; margin-right: 1.6rem;
+  border-right: 1px solid var(--line);
+}
+.ritual .hero__meta > div:last-child { border-right: 0; margin-right: 0; padding-right: 0; }
+.ritual .hero__meta dt {
+  font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--terracotta); margin-bottom: 0.3rem;
+}
+.ritual .hero__meta dd {
+  font-family: var(--font-mono); font-size: 0.8rem; color: var(--ink-soft);
+}
+
+.ritual .hero__cue {
+  position: absolute; left: var(--gutter); bottom: clamp(1.5rem, 4vh, 2.6rem);
+  display: inline-flex; align-items: center; gap: 0.8rem;
+  font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--ink-soft);
+}
+.ritual .hero__cue-line { width: 46px; height: 1px; background: var(--line); position: relative; overflow: hidden; }
+.ritual .hero__cue-line::after {
+  content: ""; position: absolute; inset: 0; width: 40%; background: var(--terracotta);
+  animation: cue-slide 3.4s var(--ease-quint) infinite;
+}
+@keyframes cue-slide { 0% { transform: translateX(-110%); } 55%, 100% { transform: translateX(260%); } }
+
+/* ============================================================
+   Positioning — framed detail print + quiet statement
+   ============================================================ */
+.ritual .intro__grid {
+  display: grid; grid-template-columns: 0.82fr 1.18fr;
+  gap: clamp(2rem, 6vw, 5.5rem); align-items: center;
+}
+.ritual .intro__statement {
+  font-size: var(--fs-h2); line-height: 1.1;
+}
+.ritual .intro__statement em { font-style: italic; font-weight: 500; color: var(--terracotta); }
+.ritual .intro__body p {
+  color: var(--ink-soft); font-size: var(--fs-body-lg);
+  line-height: 1.62; max-width: 44ch; margin-top: 1.4rem;
+}
+.ritual .intro__body .link { margin-top: 1.5rem; }
+
+/* ============================================================
+   Learn / Flavour DNA — rendered as a fine line drawing
+   ============================================================ */
+.ritual .learn__grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(2.5rem, 6vw, 5.5rem); align-items: center;
+}
+.ritual .learn h2 { font-size: var(--fs-h2); }
+
+.ritual .learn__points { list-style: none; padding: 0; margin: 2.4rem 0 0; display: grid; gap: 0; }
+.ritual .learn__points li {
+  display: grid; grid-template-columns: minmax(130px, 0.42fr) 1fr; gap: 1rem;
+  align-items: baseline; padding-block: 1.15rem; border-top: 1px solid var(--line);
+}
+.ritual .learn__points li:last-child { border-bottom: 1px solid var(--line); }
+.ritual .learn__pt-label {
+  font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--terracotta);
+}
+.ritual .learn__pt-text { color: var(--ink-soft); font-size: 0.98rem; }
+
+/* delicate radar palette */
+.ritual .dna {
+  --dna-grid:     color-mix(in oklch, var(--ink) 7%, transparent);
+  --dna-axis:     color-mix(in oklch, var(--ink) 9%, transparent);
+  --dna-label:    var(--ink-soft);
+  --dna-fill:     color-mix(in oklch, var(--terracotta) 10%, transparent);
+  --dna-stroke:   var(--terracotta);
+  --dna-dot:      var(--terracotta);
+  --dna-dot-ring: var(--mat);
+}
+.ritual .plate--dna .plate__window--dna {
+  aspect-ratio: 1 / 1; background: var(--mat);
+  display: grid; place-items: center; border-color: var(--line);
+  overflow: visible; padding: clamp(0.5rem, 2vw, 1.1rem);
+}
+.ritual .plate--dna .plate__window--dna svg { width: 100%; height: 100%; }
+.ritual text.dna-label {
+  font-family: var(--font-mono); font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.04em; fill: var(--ink-soft);
+}
+/* Harden the palette through CSS (not just the renderer's attributes) so the
+   radar is guaranteed to read as a fine, thin line drawing. */
+.ritual .dna-grid polygon { stroke: var(--dna-grid); }
+.ritual .dna-axes line { stroke: var(--dna-axis); }
+.ritual .dna-area { fill: var(--dna-fill); stroke: var(--dna-stroke); stroke-width: 1.4; }
+.ritual .dna-dots circle { fill: var(--dna-dot); stroke: var(--dna-dot-ring); r: 2.4; }
+
+.ritual .dna__readout { text-align: center; margin-top: 1.4rem; min-height: 4.4rem; }
+.ritual .dna__readout h4 { color: var(--burgundy); font-size: var(--fs-h4); }
+.ritual .dna__readout p { color: var(--ink-soft); font-size: 0.94rem; max-width: 34ch; margin: 0.45rem auto 0; }
+
+.ritual .dna__controls { display: flex; flex-wrap: wrap; gap: 1.4rem; justify-content: center; margin-top: 1.4rem; }
+.ritual .dna__btn {
+  font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--ink-soft);
+  padding: 0.35em 0; border-bottom: 1px solid transparent;
+  transition: color var(--dur-1) var(--ease-quint), border-color var(--dur-1) var(--ease-quint);
+}
+.ritual .dna__btn:hover { color: var(--terracotta); }
+.ritual .dna__btn.is-active { color: var(--burgundy); border-bottom-color: var(--terracotta); }
+
+/* ============================================================
+   Mood / Calendar — minimal, borderless, airy
+   ============================================================ */
+.ritual .mood__grid {
+  display: grid; grid-template-columns: 1fr 0.92fr;
+  gap: clamp(2.5rem, 6vw, 5.5rem); align-items: center;
+}
+.ritual .mood h2 { font-size: var(--fs-h2); }
+.ritual .mood__hint {
+  font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--terracotta); margin-top: 1.8rem;
+}
+
+.ritual .mood__panel { max-width: 420px; }
+.ritual .cal__head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding-bottom: 1rem; margin-bottom: 0.4rem; border-bottom: 1px solid var(--line);
+}
+.ritual .cal__month { font-family: var(--font-display); font-weight: 600; font-size: 1.5rem; color: var(--burgundy); }
+.ritual .cal__year { font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.14em; color: var(--ink-soft); }
+.ritual .cal__grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.3rem; text-align: center; }
+.ritual .cal__dow {
+  font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase;
+  letter-spacing: 0.04em; color: var(--ink-soft); padding-bottom: 0.5rem;
+}
+.ritual .cal__day {
+  aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%;
+  font-size: 0.95rem; color: var(--ink); box-shadow: inset 0 0 0 1px transparent;
+}
+.ritual button.cal__day {
+  cursor: pointer;
+  transition: color var(--dur-1) var(--ease-quint), box-shadow var(--dur-1) var(--ease-quint);
+}
+.ritual button.cal__day:hover { color: var(--burgundy); box-shadow: inset 0 0 0 1px var(--line); }
+.ritual .cal__day--muted { color: color-mix(in oklch, var(--ink) 30%, var(--paper)); }
+.ritual .cal__day.is-active { color: var(--terracotta); box-shadow: inset 0 0 0 1px var(--terracotta); }
+
+.ritual .brew { margin-top: 1.6rem; padding-top: 1.4rem; border-top: 1px solid var(--line); }
+.ritual .brew__tag {
+  display: inline-block; font-family: var(--font-mono); font-size: 0.68rem;
+  text-transform: uppercase; letter-spacing: 0.14em; color: var(--terracotta); margin-bottom: 0.5rem;
+}
+.ritual .brew__title { font-family: var(--font-display); font-size: var(--fs-h4); color: var(--burgundy); }
+.ritual .brew__note { color: var(--ink-soft); font-size: 0.94rem; margin-top: 0.4rem; max-width: 40ch; }
+
+/* ============================================================
+   Feed — gallery index: framed windows, mono kickers, hairline
+   separators between columns, prices understated
+   ============================================================ */
+.ritual .feed__head {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+  align-items: end; margin-bottom: clamp(2.4rem, 4vw, 3.4rem);
+}
+.ritual .feed__head h2 { font-size: var(--fs-h2); }
+.ritual .feed__intro { color: var(--ink-soft); font-size: var(--fs-body-lg); line-height: 1.6; max-width: 44ch; }
+
+.ritual .feed__grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+.ritual .feed__item { padding-inline: clamp(1rem, 2.6vw, 2.2rem); }
+.ritual .feed__item:first-child { padding-inline-start: 0; }
+.ritual .feed__item:last-child { padding-inline-end: 0; }
+.ritual .feed__item + .feed__item { border-inline-start: 1px solid var(--line); }
+
+.ritual .feed__item .plate__window img { transition: transform var(--dur-3) var(--ease-quint); }
+.ritual .feed__item:hover .plate__window img { transform: scale(1.04); }
+
+.ritual .feed__kicker {
+  display: flex; align-items: baseline; gap: 0.6em;
+  font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--terracotta); margin-top: 1.3rem;
+}
+.ritual .feed__no { color: var(--ink-soft); }
+.ritual .feed__title { font-family: var(--font-display); font-size: 1.55rem; color: var(--burgundy); margin-top: 0.5rem; }
+.ritual .feed__note { color: var(--ink-soft); font-size: 0.96rem; line-height: 1.55; margin-top: 0.55rem; }
+.ritual .feed__foot {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--line);
+}
+.ritual .feed__price { font-family: var(--font-mono); font-size: 0.95rem; color: var(--ink); letter-spacing: 0.02em; }
+.ritual .link--sm { font-size: 0.85rem; }
+
+/* ============================================================
+   Sustainability — framed print + quiet copy, outline tags
+   ============================================================ */
+.ritual .sustain__grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(2.5rem, 6vw, 5.5rem); align-items: center;
+}
+.ritual .sustain h2 { font-size: var(--fs-h2); }
+.ritual .chips { list-style: none; padding: 0; margin: 1.9rem 0 0; display: flex; flex-wrap: wrap; gap: 0.65rem; }
+.ritual .chips li {
+  font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--ink); background: transparent; border: 1px solid var(--line);
+  padding: 0.55em 1em; border-radius: var(--r-pill);
+}
+
+/* ============================================================
+   Voices — quiet typography, hairline-divided
+   ============================================================ */
+.ritual .voices__lead { max-width: 24ch; }
+.ritual .voices__lead p {
+  font-family: var(--font-display); font-weight: 500;
+  font-size: clamp(1.9rem, 1.2rem + 2.4vw, 3.2rem); line-height: 1.2; color: var(--burgundy);
+}
+.ritual .voices__lead em { font-style: italic; color: var(--terracotta); }
+.ritual .voices__lead cite,
+.ritual .voices__item cite {
+  display: block; margin-top: 1.2rem; font-family: var(--font-mono);
+  font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--terracotta); font-style: normal;
+}
+.ritual .voices__grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem);
+  margin-top: clamp(3rem, 6vw, 4.8rem); padding-top: clamp(2.4rem, 4vw, 3.4rem);
+  border-top: 1px solid var(--line);
+}
+.ritual .voices__item + .voices__item {
+  padding-inline-start: clamp(2rem, 5vw, 4rem); border-inline-start: 1px solid var(--line);
+}
+.ritual .voices__item p {
+  font-family: var(--font-display); font-style: italic; font-weight: 500;
+  font-size: 1.4rem; line-height: 1.42; color: var(--ink);
+}
+
+/* ============================================================
+   Café — framed print + copy (no full-bleed drama)
+   ============================================================ */
+.ritual .cafe__grid {
+  display: grid; grid-template-columns: 0.92fr 1.08fr;
+  gap: clamp(2.5rem, 6vw, 5.5rem); align-items: center;
+}
+.ritual .cafe__title { font-size: var(--fs-h2); }
+.ritual .cafe__body { color: var(--ink-soft); font-size: var(--fs-body-lg); line-height: 1.6; max-width: 44ch; margin: 1.2rem 0 2rem; }
+
+/* ============================================================
+   Closing CTA — light, airy, big italic promise
+   ============================================================ */
+.ritual .cta { text-align: center; padding-block: clamp(4rem, 7vw, 8rem); }
+.ritual .cta__inner { border-top: 1px solid var(--line); padding-top: clamp(4rem, 8vw, 8rem); }
+.ritual .cta__promise {
+  font-family: var(--font-display); font-style: italic; font-weight: 500;
+  font-size: clamp(2.2rem, 1.4rem + 3.4vw, 4rem); line-height: 1.14;
+  color: var(--burgundy); max-width: 18ch; margin-inline: auto;
+}
+.ritual .cta__promise em { font-style: italic; color: var(--terracotta); }
+.ritual .cta__sub { color: var(--ink-soft); font-size: var(--fs-body-lg); margin: 1.4rem auto 2.4rem; max-width: 40ch; }
+.ritual .cta__actions { display: flex; gap: 0.9rem; justify-content: center; flex-wrap: wrap; }
+
+/* ============================================================
+   Footer — light, hairlines, warm
+   ============================================================ */
+.ritual .footer {
+  background: var(--paper-2); color: var(--ink-soft);
+  border-top: 1px solid var(--line); padding-top: clamp(3.5rem, 6vw, 5.5rem);
+}
+.ritual .footer__inner {
+  display: grid; grid-template-columns: 1.3fr 2fr; gap: clamp(2rem, 6vw, 5rem); padding-bottom: 3.2rem;
+}
+.ritual .footer__logo { height: 38px; width: auto; margin-bottom: 1.3rem; }
+.ritual .footer__tag { color: var(--ink-soft); font-size: 0.95rem; line-height: 1.6; max-width: 42ch; }
+.ritual .signup { margin-top: 2rem; }
+.ritual .signup__label { display: block; font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; color: var(--burgundy); margin-bottom: 0.85rem; }
+.ritual .signup__row { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.ritual .signup__input {
+  flex: 1; min-width: 190px; background: var(--paper); border: 1px solid var(--line);
+  border-radius: var(--r-pill); padding: 0.85em 1.25em; color: var(--ink);
+  transition: border-color var(--dur-1) var(--ease-quint);
+}
+.ritual .signup__input::placeholder { color: color-mix(in oklch, var(--ink-soft) 75%, transparent); }
+.ritual .signup__input:focus-visible { border-color: var(--terracotta); outline: none; }
+
+.ritual .footer__cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.ritual .footer__col h3 {
+  font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase;
+  letter-spacing: 0.14em; color: var(--terracotta); margin-bottom: 1rem; font-weight: 500;
+}
+.ritual .footer__col a { display: block; color: var(--ink-soft); padding: 0.34rem 0; font-size: 0.95rem; transition: color var(--dur-1) var(--ease-quint); }
+.ritual .footer__col a:hover { color: var(--burgundy); }
+
+.ritual .footer__legal {
+  border-top: 1px solid var(--line); padding-block: 1.6rem 2rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+}
+.ritual .footer__social { display: flex; gap: 0.6rem; }
+.ritual .footer__social a {
+  display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 50%;
+  color: var(--ink-soft); border: 1px solid var(--line);
+  transition: color var(--dur-1) var(--ease-quint), border-color var(--dur-1) var(--ease-quint);
+}
+.ritual .footer__social a:hover { color: var(--terracotta); border-color: var(--terracotta); }
+.ritual .footer__meta { font-size: 0.8rem; color: var(--ink-soft); }
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 980px) {
+  .ritual .footer__inner { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+@media (max-width: 900px) {
+  .ritual .nav {
+    position: fixed; inset: 0 0 0 auto; width: min(84vw, 360px);
+    flex-direction: column; align-items: flex-start; justify-content: center; gap: 1.5rem;
+    background: var(--paper); color: var(--ink); padding: 5rem 2.4rem;
+    border-left: 1px solid var(--line);
+    transform: translateX(105%); transition: transform var(--dur-2) var(--ease-expo);
+    box-shadow: var(--shadow-lg); z-index: 90;
+  }
+  .ritual .nav.is-open { transform: none; }
+  .ritual .nav a { font-family: var(--font-display); font-size: 1.7rem; font-weight: 600; color: var(--burgundy); }
+  .ritual .nav a::after { display: none; }
+  .ritual .nav-toggle { display: inline-grid; place-items: center; z-index: 95; }
+
+  .ritual .hero__inner,
+  .ritual .intro__grid,
+  .ritual .learn__grid,
+  .ritual .mood__grid,
+  .ritual .sustain__grid,
+  .ritual .feed__head,
+  .ritual .cafe__grid { grid-template-columns: 1fr; }
+
+  .ritual .hero { min-height: 0; }
+  .ritual .hero__inner { gap: clamp(2.4rem, 8vw, 3.4rem); }
+  .ritual .hero__cue { display: none; }
+
+  /* let the framed print lead each split on small screens */
+  .ritual .plate--intro { order: -1; }
+  .ritual .sustain__media,
+  .ritual .plate--sustain { order: -1; }
+  .ritual .cafe__grid .plate--cafe { order: -1; }
+  .ritual .learn__viz { order: -1; }
+  .ritual .learn__grid { gap: clamp(2.4rem, 8vw, 3.4rem); }
+
+  .ritual .feed__grid { grid-template-columns: 1fr; }
+  .ritual .feed__item { padding-inline: 0; }
+  .ritual .feed__item + .feed__item {
+    border-inline-start: 0; border-top: 1px solid var(--line);
+    padding-top: clamp(2rem, 6vw, 3rem); margin-top: clamp(2rem, 6vw, 3rem);
+  }
+  .ritual .feed__item .plate__window { max-width: 460px; }
+
+  .ritual .voices__grid { grid-template-columns: 1fr; }
+  .ritual .voices__item + .voices__item {
+    padding-inline-start: 0; border-inline-start: 0;
+    padding-top: clamp(1.8rem, 5vw, 2.4rem); border-top: 1px solid var(--line);
+  }
+  .ritual .voices__lead { max-width: none; }
+
+  .ritual .mood__panel { max-width: 460px; }
+  .ritual .footer__legal { justify-content: flex-start; }
+}
+
+@media (max-width: 560px) {
+  .ritual .footer__cols { grid-template-columns: 1fr 1fr; }
+  .ritual .hero__meta { flex-direction: column; }
+  .ritual .hero__meta > div {
+    border-right: 0; border-bottom: 1px solid var(--line);
+    margin-right: 0; padding: 0.8rem 0;
+  }
+  .ritual .hero__meta > div:last-child { border-bottom: 0; }
+  .ritual .learn__points li { grid-template-columns: 1fr; gap: 0.3rem; }
+}
+
+html.nav-open { overflow: hidden; }
