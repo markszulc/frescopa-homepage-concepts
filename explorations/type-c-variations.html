@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fréscopa — Lane C variations (confident contemporary)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Big+Shoulders+Display:ital,wght@0,600;0,800;1,600;1,800&family=Bricolage+Grotesque:ital,opsz,wght@0,12..96,700;0,12..96,800;1,12..96,700;1,12..96,800&family=Figtree:ital,wght@0,400;0,500;0,800;0,900;1,400;1,500;1,800;1,900&family=Hanken+Grotesk:wght@400;500;600;700&family=Schibsted+Grotesk:ital,wght@0,500;0,700;0,800;1,500;1,700;1,800&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --burgundy:#5b1c22; --burgundy-deep:#431217; --terracotta:#b7613e;
+      --terracotta-deep:#96482a; --amber:#eaa33a; --paper:#f8f2e8; --paper-2:#f1e8d8;
+      --paper-3:#e7d9c3; --line:#d3c6b2; --ink:#2f271f; --ink-soft:#5b4f42;
+      --charcoal:#241d17; --cream:#f1e9db;
+    }
+    *{box-sizing:border-box;margin:0}
+    body{background:var(--charcoal);color:var(--ink);font-family:"Hanken Grotesk",system-ui,sans-serif;
+      -webkit-font-smoothing:antialiased;padding:clamp(1.25rem,4vw,3rem)}
+    .page{max-width:1360px;margin-inline:auto}
+    .masthead{color:var(--cream);margin-bottom:clamp(1.5rem,3vw,2.5rem)}
+    .masthead h1{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(1.5rem,3vw,2.2rem);
+      letter-spacing:-.02em;margin-bottom:.5rem}
+    .masthead p{color:#c8bba6;max-width:70ch;line-height:1.6;font-size:.95rem}
+    .masthead .how{margin-top:.9rem;font-family:"Hanken Grotesk",sans-serif;font-weight:600;font-size:.72rem;
+      letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(1rem,1.4vw,1.3rem);align-items:start}
+    .col{background:var(--paper);border:1px solid var(--line);border-radius:20px;overflow:hidden;
+      display:flex;flex-direction:column}
+    .col__tag{padding:.8rem 1.3rem;background:var(--paper-3);border-bottom:1px solid var(--line)}
+    .col__tag b{font-family:"Hanken Grotesk",sans-serif;font-weight:700;font-size:.7rem;letter-spacing:.1em;
+      text-transform:uppercase;color:var(--burgundy);display:block}
+    .col__tag span{font-family:"Hanken Grotesk",sans-serif;font-size:.78rem;color:var(--ink-soft);display:block;margin-top:.15rem}
+    .col__body{padding:clamp(1.3rem,1.8vw,1.7rem);display:flex;flex-direction:column}
+    .eyebrow{font-family:var(--body);font-size:.7rem;font-weight:600;letter-spacing:.2em;
+      text-transform:uppercase;color:var(--terracotta-deep)}
+    .display{font-family:var(--disp);font-weight:800;line-height:1.0;letter-spacing:-.025em;
+      color:var(--burgundy);font-size:clamp(2rem,2.4vw,2.7rem);margin-top:.9rem}
+    .display em{font-style:normal;color:var(--terracotta)}
+    .promise{font-family:var(--disp);font-weight:600;color:var(--ink);
+      font-size:clamp(1.05rem,1.2vw,1.25rem);margin-top:.9rem;line-height:1.2;letter-spacing:-.01em}
+    .promise em{font-style:normal;font-weight:700;color:var(--terracotta)}
+    .body{font-family:var(--body);color:var(--ink-soft);line-height:1.6;font-size:.98rem;
+      margin-top:1rem;max-width:40ch}
+    .btn{align-self:flex-start;margin-top:1.4rem;font-family:var(--body);font-weight:600;font-size:.88rem;
+      color:var(--cream);background:var(--terracotta-deep);padding:.8em 1.35em;border-radius:999px;
+      text-decoration:none;display:inline-flex;gap:.5em}
+    .rule{height:1px;background:var(--line);margin:1.5rem 0 0}
+    .specimen{font-family:var(--disp);color:var(--burgundy);font-size:2.2rem;font-weight:800;
+      letter-spacing:0;margin-top:1.3rem;line-height:1.05}
+    .specimen small{display:block;font-family:var(--body);font-weight:500;font-size:.92rem;
+      color:var(--ink-soft);letter-spacing:0;margin-top:.5rem}
+    .credit{font-family:"Hanken Grotesk",sans-serif;font-size:.75rem;color:var(--ink-soft);
+      margin-top:1.3rem;line-height:1.6}
+    .credit b{color:var(--ink);font-weight:600}
+    .credit .prod{color:var(--terracotta-deep);display:block;margin-top:.3rem}
+
+    .col--c1{--disp:"Bricolage Grotesque",sans-serif;--body:"Hanken Grotesk",sans-serif}
+    .col--c2{--disp:"Schibsted Grotesk",sans-serif;--body:"Hanken Grotesk",sans-serif}
+    .col--c3{--disp:"Figtree",sans-serif;--body:"Figtree",sans-serif}
+    .col--c3 .display{font-weight:900}
+    .col--c4{--disp:"Archivo Black",sans-serif;--body:"Hanken Grotesk",sans-serif}
+    .col--c4 .display{font-weight:400;letter-spacing:-.02em}
+    .col--c4 .promise{font-weight:400}
+    .col--c5{--disp:"Big Shoulders Display",sans-serif;--body:"Hanken Grotesk",sans-serif}
+    .col--c5 .display{font-weight:800;letter-spacing:-.01em;text-transform:uppercase;line-height:.92;font-size:clamp(2.2rem,2.7vw,3.1rem)}
+    .col--c5 .specimen{text-transform:uppercase}
+
+    footer{color:#c8bba6;margin-top:clamp(1.5rem,3vw,2.5rem);font-size:.85rem;line-height:1.7;max-width:92ch}
+    footer b{color:var(--cream);font-weight:600}
+    footer .note{color:var(--amber);font-family:"Hanken Grotesk",sans-serif;font-weight:600;font-size:.72rem;
+      letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:.4rem}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="masthead">
+      <h1>Lane C — five ways to be confident and contemporary</h1>
+      <p>All sans-led, all shedding the editorial-AI look, all still on the real Fréscopa palette. Only the type changes. Each one is a different personality within the lane you picked — from designy to industrial. Small labels use the AA-passing terracotta.</p>
+      <p class="how">Web stand-ins shown · exact Adobe Fonts equivalents on request</p>
+    </div>
+
+    <div class="grid">
+
+      <section class="col col--c1">
+        <div class="col__tag"><b>C1 · Idiosyncratic grotesque</b><span>Designy, art-school confident — what you saw</span></div>
+        <div class="col__body">
+          <p class="eyebrow">Meet the Atelier</p>
+          <h2 class="display">Every morning, <em>perfected.</em></h2>
+          <p class="promise">Barista craft, <em>with a mind of its own.</em></p>
+          <p class="body">It learns what you love, softens or sharpens to match your mood, and quietly takes care of the rest.</p>
+          <a class="btn" href="#">Explore taste profiles →</a>
+          <div class="rule"></div>
+          <p class="specimen">Aa Gg Rf&nbsp;&amp;<small>0123456789 — the weekday cup</small></p>
+          <p class="credit"><b>Bricolage Grotesque</b> + <b>Hanken Grotesk</b><span class="prod">Adobe: a quirky grotesque (we'll match live)</span></p>
+        </div>
+      </section>
+
+      <section class="col col--c2">
+        <div class="col__tag"><b>C2 · Swiss neo-grotesque</b><span>Tight, precise, quietly premium</span></div>
+        <div class="col__body">
+          <p class="eyebrow">Meet the Atelier</p>
+          <h2 class="display">Every morning, <em>perfected.</em></h2>
+          <p class="promise">Barista craft, <em>with a mind of its own.</em></p>
+          <p class="body">It learns what you love, softens or sharpens to match your mood, and quietly takes care of the rest.</p>
+          <a class="btn" href="#">Explore taste profiles →</a>
+          <div class="rule"></div>
+          <p class="specimen">Aa Gg Rf&nbsp;&amp;<small>0123456789 — the weekday cup</small></p>
+          <p class="credit"><b>Schibsted Grotesk</b> + <b>Hanken Grotesk</b><span class="prod">Adobe: Aktiv Grotesk / Neue Haas / Söhne</span></p>
+        </div>
+      </section>
+
+      <section class="col col--c3">
+        <div class="col__tag"><b>C3 · Warm humanist</b><span>Friendly, rounded, approachable premium</span></div>
+        <div class="col__body">
+          <p class="eyebrow">Meet the Atelier</p>
+          <h2 class="display">Every morning, <em>perfected.</em></h2>
+          <p class="promise">Barista craft, <em>with a mind of its own.</em></p>
+          <p class="body">It learns what you love, softens or sharpens to match your mood, and quietly takes care of the rest.</p>
+          <a class="btn" href="#">Explore taste profiles →</a>
+          <div class="rule"></div>
+          <p class="specimen">Aa Gg Rf&nbsp;&amp;<small>0123456789 — the weekday cup</small></p>
+          <p class="credit"><b>Figtree</b> (one family)<span class="prod">Adobe: Sofia Pro / Filson Pro / Cera Pro</span></p>
+        </div>
+      </section>
+
+      <section class="col col--c4">
+        <div class="col__tag"><b>C4 · Bold statement</b><span>Heavy, immediate, high-impact</span></div>
+        <div class="col__body">
+          <p class="eyebrow">Meet the Atelier</p>
+          <h2 class="display">Every morning, <em>perfected.</em></h2>
+          <p class="promise">Barista craft, <em>with a mind of its own.</em></p>
+          <p class="body">It learns what you love, softens or sharpens to match your mood, and quietly takes care of the rest.</p>
+          <a class="btn" href="#">Explore taste profiles →</a>
+          <div class="rule"></div>
+          <p class="specimen">Aa Gg Rf&nbsp;&amp;<small>0123456789 — the weekday cup</small></p>
+          <p class="credit"><b>Archivo Black</b> + <b>Hanken Grotesk</b><span class="prod">Adobe: Ambit / Aktiv Grotesk Extended</span></p>
+        </div>
+      </section>
+
+      <section class="col col--c5">
+        <div class="col__tag"><b>C5 · Industrial craft</b><span>Tall, condensed, appliance-maker heritage</span></div>
+        <div class="col__body">
+          <p class="eyebrow">Meet the Atelier</p>
+          <h2 class="display">Every morning, <em>perfected.</em></h2>
+          <p class="promise">Barista craft, <em>with a mind of its own.</em></p>
+          <p class="body">It learns what you love, softens or sharpens to match your mood, and quietly takes care of the rest.</p>
+          <a class="btn" href="#">Explore taste profiles →</a>
+          <div class="rule"></div>
+          <p class="specimen">Aa Gg Rf&nbsp;&amp;<small>0123456789 — the weekday cup</small></p>
+          <p class="credit"><b>Big Shoulders Display</b> + <b>Hanken Grotesk</b><span class="prod">Adobe: Bureau Grot / Heading Now</span></p>
+        </div>
+      </section>
+
+    </div>
+
+    <footer>
+      <span class="note">Reading the spread</span>
+      <b>C1</b> is designy and a little offbeat. <b>C2</b> is the restrained, Swiss, quietly-expensive route. <b>C3</b> is the warmest and friendliest — closest to Fréscopa's "expert friend" voice. <b>C4</b> hits hardest and reads most like a challenger brand. <b>C5</b> leans into the fact that Fréscopa makes a machine — tall industrial letterforms with a heritage feel. Emphasis across all five is colour and weight, no italics — this lane drops the italic-headline habit entirely, which is one less thing that reads as AI. Tell me which one (or which two to cross) and I'll build it into a live Craft &amp; Current page, then pull the exact licensed faces from Adobe Fonts.
+    </footer>
+  </div>
+</body>
+</html>
