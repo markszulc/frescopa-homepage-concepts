@@ -10,7 +10,8 @@ section[id] { scroll-margin-top: 92px; }
 .atelier main > section { position: relative; }
 .intro, .mood, .sustain { background: var(--paper); }
 .learn, .feed, .voices { background: var(--paper-2); }
-.intro, .learn, .mood, .feed, .sustain, .voices { padding-block: var(--section-y); }
+.intro, .learn, .mood, .feed, .sustain, .voices { padding-block: clamp(3rem, 2rem + 4vw, 6rem); }
+.intro { padding-block: clamp(2.5rem, 1.5rem + 3.5vw, 4.5rem); }
 
 /* ---------------- Header ---------------- */
 .header {
