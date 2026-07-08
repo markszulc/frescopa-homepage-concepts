@@ -337,7 +337,7 @@ html { scroll-behavior: smooth; }
   text-transform: uppercase; letter-spacing: 0.14em; color: var(--terracotta); margin-bottom: 0.5rem;
 }
 .ritual .brew__title { font-family: var(--font-display); font-size: var(--fs-h4); color: var(--burgundy); }
-.ritual .brew__note { color: var(--ink-soft); font-size: 0.94rem; margin-top: 0.4rem; max-width: 40ch; }
+.ritual .brew__note { color: var(--ink-soft); font-size: 0.94rem; margin-top: 0.4rem; max-width: 40ch; min-height: 3.24em; }
 
 /* ============================================================
    Feed — gallery index: framed windows, mono kickers, hairline
