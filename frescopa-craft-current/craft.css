@@ -1,0 +1,585 @@
+/* ============================================================
+   DIRECTION 3 — "Craft & Current"
+   Bold, art-directed, magazine-cover. Committed, drenched colour:
+   a burgundy cover, two charcoal sections, a terracotta close.
+   Oversized Playfair, mono folios, amber as the vivid accent.
+   Warm throughout: burgundy, terracotta, amber, charcoal only.
+   All styles scoped under .craft.
+   ============================================================ */
+
+html { scroll-behavior: smooth; }
+.craft section[id] { scroll-margin-top: 84px; }
+.craft {
+  --font-display: "Figtree", system-ui, sans-serif;
+  --font-body: "Figtree", system-ui, sans-serif;
+  --font-mono: "Figtree", system-ui, sans-serif;
+  background: var(--paper);
+}
+.craft main > section { position: relative; }
+
+/* Section rhythm — deliberate light / drenched alternation */
+.craft .intro   { background: var(--paper); }
+.craft .learn   { background: var(--charcoal); color: var(--cream); overflow: hidden; }
+.craft .mood    { background: var(--paper-2); }
+.craft .feed    { background: var(--paper); }
+.craft .sustain { background: var(--charcoal); color: var(--cream); overflow: hidden; }
+.craft .voices  { background: var(--paper-2); }
+
+.craft .intro, .craft .learn, .craft .mood,
+.craft .feed, .craft .sustain, .craft .voices { padding-block: var(--section-y); }
+
+.craft .learn .container,
+.craft .sustain .container { position: relative; z-index: 1; }
+
+/* Focus stays visible on drenched grounds */
+.craft .hero :focus-visible, .craft .learn :focus-visible,
+.craft .sustain :focus-visible, .craft .cafe :focus-visible,
+.craft .cta :focus-visible, .craft .footer :focus-visible,
+.craft .card--feature :focus-visible { outline-color: var(--amber); }
+
+/* ============================================================
+   Shared building blocks for this direction
+   ============================================================ */
+
+/* Numbered folio kicker */
+.craft .kicker {
+  display: inline-flex; align-items: center; gap: 0.85em;
+  font-family: var(--font-mono); font-size: var(--fs-eyebrow);
+  font-weight: 500; letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase; color: var(--terracotta);
+}
+.craft .kicker__n {
+  font-size: 0.95em; font-weight: 500; line-height: 1;
+  color: var(--burgundy); letter-spacing: 0.06em;
+  padding: 0.4em 0.6em; border-radius: var(--r-sm);
+  border: 1px solid color-mix(in oklch, var(--burgundy) 30%, transparent);
+}
+.craft .kicker--dark { color: var(--amber); }
+.craft .kicker--dark .kicker__n {
+  color: var(--amber);
+  border-color: color-mix(in oklch, var(--amber) 45%, transparent);
+}
+
+/* Lede paragraph */
+.craft .lede {
+  color: var(--ink-soft); font-size: var(--fs-body-lg);
+  margin-top: 1.2rem; max-width: 48ch; line-height: 1.55;
+}
+.craft .lede--dark { color: var(--cream-soft); }
+
+/* Image frame */
+.craft .frame {
+  position: relative; overflow: hidden;
+  border-radius: var(--r-lg); box-shadow: var(--shadow-lg);
+  background: var(--paper-3);
+}
+.craft .frame img { width: 100%; height: 100%; object-fit: cover; }
+.craft .frame--tall { aspect-ratio: 4 / 5; }
+
+/* Hover-to-play video reveal: video sits absolutely over the still image,
+   crossfading in on hover. First frame of the video is matched to the
+   still so the swap is seamless. */
+.craft .frame--hover-video img,
+.craft .frame--hover-video video {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+}
+.craft .frame--hover-video img { transition: opacity 0.45s var(--ease-quint); }
+.craft .frame--hover-video video { opacity: 0; transition: opacity 0.45s var(--ease-quint); }
+.craft .frame--hover-video.is-playing img { opacity: 0; }
+.craft .frame--hover-video.is-playing video { opacity: 1; }
+
+/* Oversized ghost folio numeral */
+.craft .bignum {
+  position: absolute; z-index: 0; top: -0.12em; left: calc(var(--gutter) * -0.1);
+  font-family: var(--font-display); font-weight: 900; line-height: 0.7;
+  font-size: clamp(8rem, 26vw, 23rem); letter-spacing: -0.04em;
+  color: color-mix(in oklch, var(--amber) 12%, transparent);
+  pointer-events: none; user-select: none;
+}
+.craft .bignum--right { left: auto; right: calc(var(--gutter) * -0.2); top: 6%; }
+
+/* Ghost buttons on drenched grounds */
+.craft .btn--on-dark { color: var(--cream); border-color: color-mix(in oklch, var(--cream) 42%, transparent); }
+.craft .btn--on-dark:hover { background: color-mix(in oklch, var(--cream) 12%, transparent); border-color: var(--cream); }
+
+/* ============================================================
+   Header — a committed burgundy masthead
+   ============================================================ */
+.craft .header {
+  position: fixed; inset: 0 0 auto 0; z-index: 100; color: var(--cream);
+  transition: transform var(--dur-2) var(--ease-quint),
+              background-color var(--dur-2) var(--ease-quint),
+              box-shadow var(--dur-2) var(--ease-quint);
+}
+.craft .header__inner {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.5rem; padding-block: 1.05rem;
+}
+.craft .header.is-scrolled {
+  background: color-mix(in oklch, var(--burgundy) 90%, transparent);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 color-mix(in oklch, var(--amber) 24%, transparent), var(--shadow-md);
+}
+.craft .header.is-hidden { transform: translateY(-100%); }
+.craft .header__brand { display: block; line-height: 0; }
+.craft .header__logo { height: 30px; width: auto; }
+
+.craft .nav { display: flex; align-items: center; gap: clamp(1.1rem, 2vw, 2.2rem); }
+.craft .nav a {
+  font-family: var(--font-mono); font-size: 0.8rem; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream);
+  position: relative; padding: 0.3rem 0;
+}
+.craft .nav a::after {
+  content: ""; position: absolute; left: 0; bottom: -1px; height: 1.5px; width: 0;
+  background: var(--amber); transition: width var(--dur-2) var(--ease-quint);
+}
+.craft .nav a:hover { color: var(--amber); }
+.craft .nav a:hover::after { width: 100%; }
+
+.craft .header__utils { display: flex; align-items: center; gap: 0.3rem; }
+.craft .iconbtn {
+  display: inline-grid; place-items: center; width: 40px; height: 40px;
+  border-radius: 50%; color: var(--cream);
+  transition: background-color var(--dur-1) var(--ease-quint), color var(--dur-1);
+}
+.craft .iconbtn:hover { background: color-mix(in oklch, var(--cream) 14%, transparent); color: var(--amber); }
+
+.craft .nav-toggle { display: none; width: 42px; height: 42px; border-radius: 50%; position: relative; color: var(--cream); }
+.craft .nav-toggle span {
+  position: absolute; left: 11px; width: 20px; height: 1.8px; background: currentColor;
+  border-radius: 2px; transition: transform var(--dur-1) var(--ease-quint), opacity var(--dur-1);
+}
+.craft .nav-toggle span:first-child { top: 17px; }
+.craft .nav-toggle span:last-child { top: 24px; }
+.craft .nav-toggle[aria-expanded="true"] span:first-child { transform: translateY(3.5px) rotate(45deg); }
+.craft .nav-toggle[aria-expanded="true"] span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
+
+/* ============================================================
+   Hero — the cover
+   ============================================================ */
+.craft .hero {
+  position: relative; overflow: hidden; isolation: isolate;
+  background: var(--burgundy);
+}
+.craft .hero::before {
+  content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(70% 60% at 6% 16%, color-mix(in oklch, var(--amber) 16%, transparent), transparent 60%),
+    radial-gradient(90% 90% at 108% 108%, var(--burgundy-deep), transparent 55%);
+}
+.craft .hero__media { position: absolute; z-index: 1; inset: 0 0 0 auto; width: 60%; }
+.craft .hero__media img {
+  position: absolute; top: -4%; left: 0; width: 100%; height: 108%;
+  object-fit: cover; object-position: 62% 42%;
+}
+.craft .hero__scrim {
+  position: absolute; z-index: 2; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(180deg, color-mix(in oklch, var(--burgundy-deep) 55%, transparent), transparent 12%),
+    linear-gradient(90deg, var(--burgundy) 0%, var(--burgundy) 52%,
+      color-mix(in oklch, var(--burgundy) 55%, transparent) 60%, transparent 68%),
+    linear-gradient(0deg, color-mix(in oklch, var(--burgundy-deep) 62%, transparent), transparent 30%);
+}
+.craft .hero__inner {
+  position: relative; z-index: 3;
+  min-height: min(100vh, 980px);
+  max-width: var(--content-wide); margin-inline: auto; padding-inline: var(--gutter);
+  display: grid; grid-template-rows: auto 1fr auto;
+  padding-block: clamp(5.75rem, 10vh, 8rem) clamp(1.6rem, 4vh, 2.6rem);
+  color: var(--cream);
+}
+.craft .hero__mast, .craft .hero__text, .craft .hero__foot { max-width: min(660px, 100%); }
+
+.craft .hero__mast {
+  align-self: start;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.24em;
+  text-transform: uppercase; color: var(--cream-soft);
+  padding-bottom: 0.9rem; margin-bottom: 0.4rem;
+  border-bottom: 1px solid color-mix(in oklch, var(--cream) 22%, transparent);
+}
+.craft .hero__mast-l { color: var(--cream); }
+
+.craft .hero__text { align-self: center; padding-block: clamp(1.4rem, 4vh, 3rem); }
+.craft .hero__index {
+  display: inline-flex; align-items: center; gap: 0.7em;
+  font-family: var(--font-mono); font-size: clamp(0.75rem, 0.7rem + 0.2vw, 0.86rem);
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--amber);
+  margin-bottom: clamp(0.9rem, 2.5vw, 1.5rem);
+}
+.craft .hero__index-n { font-size: 1.15em; letter-spacing: 0.05em; }
+.craft .hero__title {
+  font-family: var(--font-display); color: var(--cream); font-weight: 800;
+  font-size: var(--fs-display); line-height: 0.92; letter-spacing: -0.02em;
+  text-shadow: 0 2px 40px oklch(0.12 0.02 30 / 0.35);
+}
+.craft .hero__title > * { display: block; }
+.craft .hero__title-2 { padding-left: 0.5em; }
+.craft .hero__title-3 { font-style: normal; font-weight: 800; color: var(--amber); }
+.craft .hero__lead {
+  color: var(--cream); opacity: 0.92; font-size: var(--fs-body-lg);
+  max-width: 42ch; margin-top: clamp(1.2rem, 2.5vw, 1.9rem); line-height: 1.55;
+}
+.craft .hero__actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: clamp(1.6rem, 3vw, 2.3rem); }
+
+.craft .hero__foot { align-self: end; display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem; }
+.craft .hero__coverlines {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-wrap: wrap; gap: 0.6rem 1rem;
+  font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--cream-soft);
+}
+.craft .hero__coverlines li { padding-left: 1rem; border-left: 1px solid color-mix(in oklch, var(--amber) 55%, transparent); line-height: 1; }
+.craft .hero__scroll {
+  display: inline-flex; align-items: center; gap: 0.5rem; white-space: nowrap;
+  font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--cream-soft);
+  transition: color var(--dur-1) var(--ease-quint);
+}
+.craft .hero__scroll:hover { color: var(--amber); }
+.craft .hero__scroll svg { animation: craft-nudge 2.4s var(--ease-quint) infinite; }
+@keyframes craft-nudge { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
+
+/* ============================================================
+   01 · Positioning
+   ============================================================ */
+.craft .intro__grid {
+  display: grid; grid-template-columns: 0.82fr 1.18fr;
+  gap: clamp(2rem, 6vw, 5rem); align-items: center;
+}
+.craft .intro__media { position: relative; }
+.craft .frame__tag {
+  position: absolute; left: 1rem; bottom: 1rem; z-index: 2;
+  font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--cream);
+  background: color-mix(in oklch, var(--burgundy) 84%, transparent);
+  -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+  padding: 0.5em 0.9em; border-radius: var(--r-pill);
+}
+.craft .intro__statement {
+  font-family: var(--font-display); font-size: var(--fs-h1); font-weight: 800;
+  line-height: 0.98; letter-spacing: -0.02em; color: var(--burgundy); margin-top: 1.4rem;
+}
+.craft .intro__statement em { font-style: normal; font-weight: 800; color: var(--terracotta); }
+.craft .intro__body { color: var(--ink-soft); font-size: var(--fs-body-lg); max-width: 46ch; margin-top: 1.5rem; }
+.craft .intro__copy .link { margin-top: 1.6rem; }
+
+/* ============================================================
+   02 · Flavour DNA — signature, glowing on charcoal
+   ============================================================ */
+.craft .learn__head { max-width: 60ch; margin-bottom: clamp(2.4rem, 5vw, 3.8rem); }
+.craft .learn__title {
+  color: var(--cream); font-family: var(--font-display); font-size: var(--fs-h1);
+  line-height: 1; letter-spacing: -0.02em; margin-top: 1rem;
+}
+.craft .learn__title em { font-style: normal; font-weight: 800; color: var(--amber); }
+
+.craft .dna {
+  --dna-grid: color-mix(in oklch, var(--cream) 12%, transparent);
+  --dna-axis: color-mix(in oklch, var(--cream) 14%, transparent);
+  --dna-label: var(--cream-soft);
+  --dna-fill: color-mix(in oklch, var(--amber) 16%, transparent);
+  --dna-stroke: var(--amber);
+  --dna-dot: var(--amber);
+  --dna-dot-ring: var(--charcoal);
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1.08fr 0.92fr;
+  gap: clamp(2rem, 5vw, 4.5rem); align-items: center;
+}
+.craft .dna__stage { position: relative; display: grid; place-items: center; }
+.craft .dna__stage::before {
+  content: ""; position: absolute; inset: 8%; z-index: 0; border-radius: 50%;
+  background: radial-gradient(circle at 50% 48%, color-mix(in oklch, var(--amber) 30%, transparent), transparent 66%);
+  filter: blur(26px); pointer-events: none;
+}
+.craft .dna svg { position: relative; z-index: 1; width: 100%; max-width: 560px; height: auto; margin-inline: auto; }
+.craft .dna text.dna-label { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; }
+
+.craft .dna__readout { min-height: 5.6rem; }
+.craft .dna__readout h4 { font-family: var(--font-display); font-size: var(--fs-h3); color: var(--cream); }
+.craft .dna__readout p { color: var(--cream-soft); font-size: var(--fs-body); max-width: 34ch; margin-top: 0.5rem; }
+.craft .dna__controls { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-top: 1.5rem; }
+.craft .dna__btn {
+  font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.65em 1.1em; border-radius: var(--r-pill); color: var(--cream-soft);
+  border: 1px solid color-mix(in oklch, var(--cream) 24%, transparent);
+  background: color-mix(in oklch, var(--cream) 5%, transparent);
+  transition: color var(--dur-1) var(--ease-quint), background-color var(--dur-1), border-color var(--dur-1);
+}
+.craft .dna__btn:hover { color: var(--amber); border-color: color-mix(in oklch, var(--amber) 60%, transparent); }
+.craft .dna__btn.is-active { background: var(--amber); color: var(--charcoal); border-color: var(--amber); font-weight: 500; }
+
+.craft .learn__points { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; gap: 1rem; }
+.craft .learn__points li {
+  display: grid; grid-template-columns: minmax(110px, 0.36fr) 1fr; gap: 1rem; align-items: baseline;
+  padding-top: 1rem; border-top: 1px solid color-mix(in oklch, var(--cream) 14%, transparent);
+}
+.craft .learn__pt-label { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); }
+.craft .learn__pt-text { color: var(--cream-soft); font-size: 0.96rem; }
+
+/* ============================================================
+   03 · Mood-aware brewing
+   ============================================================ */
+.craft .mood__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 5rem); align-items: center; }
+.craft .mood__title { font-family: var(--font-display); font-size: var(--fs-h1); color: var(--burgundy); line-height: 1; letter-spacing: -0.02em; margin-top: 1rem; }
+.craft .mood__title em { font-style: normal; font-weight: 800; color: var(--terracotta); }
+.craft .mood__hint {
+  display: inline-flex; align-items: center; gap: 0.6em; margin-top: 1.6rem;
+  font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--terracotta);
+}
+.craft .mood__hint::before { content: ""; width: 1.5em; height: 1px; background: currentColor; }
+
+.craft .mood__panel-wrap { position: relative; }
+.craft .mood__figure { aspect-ratio: 4 / 3; }
+.craft .cal-card {
+  position: relative; z-index: 2; background: var(--paper);
+  border: 1px solid var(--line); border-radius: var(--r-xl);
+  box-shadow: var(--shadow-lg); padding: clamp(1.3rem, 3vw, 1.9rem);
+}
+.craft .cal__head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1rem; }
+.craft .cal__month { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--burgundy); }
+.craft .cal__year { font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.14em; color: var(--ink-soft); }
+.craft .cal__grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.4rem; text-align: center; }
+.craft .cal__dow { font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-soft); padding-bottom: 0.4rem; }
+.craft .cal__day { aspect-ratio: 1; display: grid; place-items: center; border-radius: 11px; font-size: 0.95rem; font-weight: 500; color: var(--ink); border: 1px solid transparent; }
+.craft button.cal__day { cursor: pointer; transition: background-color var(--dur-1) var(--ease-quint), color var(--dur-1), transform var(--dur-1); }
+.craft button.cal__day:hover { background: var(--paper-3); transform: translateY(-1px); }
+.craft .cal__day--muted { color: color-mix(in oklch, var(--ink) 30%, var(--paper)); }
+.craft .cal__day.is-active { background: var(--burgundy); color: var(--cream); font-weight: 600; box-shadow: var(--shadow-sm); }
+
+.craft .brew {
+  margin-top: 1.3rem; border-radius: var(--r-md); padding: 1.15rem 1.3rem;
+  background: color-mix(in oklch, var(--amber) 16%, var(--paper));
+  border: 1px solid color-mix(in oklch, var(--amber) 30%, transparent);
+}
+.craft .brew__tag { display: inline-block; font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--terracotta-deep); margin-bottom: 0.4rem; }
+.craft .brew__title { font-family: var(--font-display); font-size: var(--fs-h4); color: var(--burgundy); }
+.craft .brew__note { color: var(--ink-soft); font-size: 0.92rem; margin-top: 0.3rem; min-height: 3.24em; }
+
+/* ============================================================
+   04 · Weekly suggestions — editorial arrangement
+   ============================================================ */
+.craft .feed__head {
+  display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 2rem; align-items: end;
+  margin-bottom: clamp(2.2rem, 4vw, 3.2rem);
+}
+.craft .feed__title { font-family: var(--font-display); font-size: var(--fs-h1); color: var(--burgundy); line-height: 1; letter-spacing: -0.02em; margin-top: 1rem; }
+.craft .feed__title em { font-style: normal; font-weight: 800; color: var(--terracotta); }
+.craft .feed__intro { color: var(--ink-soft); font-size: var(--fs-body-lg); max-width: 42ch; }
+
+.craft .feed__grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(1.2rem, 2.4vw, 1.8rem); }
+.craft .card--feature { grid-column: 1; grid-row: 1 / span 2; }
+
+.craft .card {
+  background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg);
+  overflow: hidden; display: flex; flex-direction: column;
+  transition: transform var(--dur-2) var(--ease-quint), box-shadow var(--dur-2) var(--ease-quint);
+}
+.craft .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+.craft .card__media { position: relative; overflow: hidden; aspect-ratio: 4 / 3; }
+.craft .card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease-quint); }
+.craft .card:hover .card__media img { transform: scale(1.06); }
+.craft .card__cat {
+  position: absolute; top: 0.85rem; left: 0.85rem;
+  font-family: var(--font-mono); font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.12em;
+  background: color-mix(in oklch, var(--paper) 90%, transparent);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  color: var(--burgundy); padding: 0.4em 0.75em; border-radius: var(--r-pill);
+}
+.craft .card__body { padding: 1.3rem 1.4rem 1.4rem; display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
+.craft .card__title { font-family: var(--font-display); font-size: 1.5rem; color: var(--burgundy); font-weight: 700; }
+.craft .card__note { color: var(--ink-soft); font-size: 0.94rem; flex: 1; }
+.craft .card__foot { display: flex; align-items: center; justify-content: space-between; margin-top: 0.7rem; padding-top: 0.9rem; border-top: 1px solid var(--line); }
+.craft .card__price { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: var(--ink); }
+.craft .link--sm { font-size: 0.85rem; }
+
+/* Featured tile — drenched burgundy for internal contrast */
+.craft .card--feature { background: var(--burgundy); border: none; color: var(--cream); }
+.craft .card--feature .card__media { aspect-ratio: auto; flex: 1; min-height: 250px; }
+.craft .card--feature .card__body { padding: clamp(1.4rem, 2.5vw, 2rem); flex: none; }
+.craft .card--feature .card__kicker { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); }
+.craft .card--feature .card__title { color: var(--cream); font-size: clamp(1.7rem, 2.4vw, 2.3rem); }
+.craft .card--feature .card__note { color: color-mix(in oklch, var(--cream) 82%, transparent); font-size: var(--fs-body); }
+.craft .card--feature .card__foot { border-top-color: color-mix(in oklch, var(--cream) 22%, transparent); }
+.craft .card--feature .card__price { color: var(--cream); }
+.craft .card--feature .card__cat { color: var(--burgundy); }
+.craft .link--on-dark { color: var(--amber); }
+
+/* ============================================================
+   05 · Sustainability — charcoal
+   ============================================================ */
+.craft .sustain__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 5rem); align-items: center; }
+.craft .sustain__title { color: var(--cream); font-family: var(--font-display); font-size: var(--fs-h1); line-height: 1; letter-spacing: -0.02em; margin-top: 1rem; }
+.craft .sustain__title em { font-style: normal; font-weight: 800; color: var(--amber); }
+.craft .sustain .frame { aspect-ratio: 5 / 4; }
+.craft .chips { list-style: none; padding: 0; margin: 1.8rem 0 0; display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.craft .chips li {
+  font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--cream); padding: 0.55em 0.95em; border-radius: var(--r-pill);
+  background: color-mix(in oklch, var(--cream) 8%, transparent);
+  border: 1px solid color-mix(in oklch, var(--cream) 22%, transparent);
+}
+
+/* ============================================================
+   06 · Testimonials — a confident pull-quote
+   ============================================================ */
+.craft .voices__grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; margin-top: clamp(1.6rem, 3vw, 2.4rem); }
+.craft .voices__lead { position: relative; }
+.craft .voices__lead::before {
+  content: "\201C"; display: block; font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(4rem, 10vw, 7.5rem); line-height: 0.7; margin-bottom: 0.1em;
+  color: color-mix(in oklch, var(--terracotta) 42%, transparent);
+}
+.craft .voices__lead p { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.9rem, 1.2rem + 2.8vw, 3.4rem); line-height: 1.14; color: var(--burgundy); }
+.craft .voices__lead em { font-style: normal; font-weight: 800; color: var(--terracotta); }
+.craft .voices__lead cite, .craft .voices__item cite { display: block; margin-top: 1.1rem; font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--terracotta); font-style: normal; }
+.craft .voices__figure { aspect-ratio: 4 / 5; }
+.craft .voices__more { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); margin-top: clamp(2.4rem, 5vw, 3.6rem); padding-top: clamp(2rem, 4vw, 3rem); border-top: 1px solid var(--line); }
+.craft .voices__item p { font-family: var(--font-display); font-style: normal; font-weight: 600; font-size: 1.4rem; line-height: 1.4; color: var(--ink); }
+
+/* ============================================================
+   07 · Café band
+   ============================================================ */
+.craft .cafe { position: relative; min-height: 66vh; display: flex; align-items: center; overflow: hidden; }
+.craft .cafe__media { position: absolute; inset: 0; z-index: 0; }
+.craft .cafe__media img { position: absolute; top: -5%; left: 0; width: 100%; height: 110%; object-fit: cover; object-position: center 52%; }
+.craft .cafe__scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(92deg,
+    color-mix(in oklch, var(--burgundy-deep) 88%, transparent) 0%,
+    color-mix(in oklch, var(--burgundy) 60%, transparent) 42%, transparent 80%);
+}
+.craft .cafe__inner { position: relative; z-index: 1; max-width: 640px; color: var(--cream); padding-block: clamp(3.5rem, 7vw, 5.5rem); }
+.craft .cafe__title { color: var(--cream); font-family: var(--font-display); font-size: var(--fs-h2); line-height: 1.05; margin-top: 1rem; }
+.craft .cafe__title em { font-style: normal; font-weight: 800; color: var(--amber); }
+.craft .cafe__body { color: color-mix(in oklch, var(--cream) 90%, transparent); margin: 1.1rem 0 1.9rem; max-width: 46ch; }
+
+/* ============================================================
+   Closing CTA — drenched terracotta
+   ============================================================ */
+.craft .cta { position: relative; isolation: isolate; overflow: hidden; text-align: center; color: var(--cream); background: var(--terracotta-deep); padding-block: clamp(5rem, 9vw, 9.5rem); }
+.craft .cta::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(65% 85% at 50% 6%, color-mix(in oklch, var(--amber) 28%, transparent), transparent 60%),
+    radial-gradient(80% 90% at 50% 122%, var(--burgundy-deep), transparent 68%);
+}
+.craft .cta__eyebrow { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.24em; text-transform: uppercase; color: color-mix(in oklch, var(--cream) 88%, transparent); }
+.craft .cta__promise { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.4rem, 1.3rem + 4.6vw, 5rem); line-height: 1.04; color: var(--cream); max-width: 18ch; margin: 1rem auto 0; }
+.craft .cta__promise em { font-style: normal; font-weight: 800; color: var(--amber); }
+.craft .cta__sub { color: color-mix(in oklch, var(--cream) 92%, transparent); font-size: var(--fs-body-lg); margin: 1.4rem auto 2.3rem; max-width: 42ch; }
+.craft .cta__actions { display: flex; gap: 0.9rem; justify-content: center; flex-wrap: wrap; }
+
+/* ============================================================
+   Footer — charcoal
+   ============================================================ */
+.craft .footer { background: var(--charcoal); color: var(--cream-soft); padding-top: clamp(3.5rem, 6vw, 5.5rem); }
+.craft .footer__inner { display: grid; grid-template-columns: 1.3fr 2fr; gap: clamp(2rem, 6vw, 5rem); padding-bottom: 3rem; }
+.craft .footer__logo { height: 40px; width: auto; margin-bottom: 1.3rem; }
+.craft .footer__tag { color: var(--cream-soft); font-size: 0.95rem; max-width: 42ch; }
+.craft .signup { margin-top: 1.9rem; }
+.craft .signup__label { display: block; font-family: var(--font-display); font-size: 1.2rem; color: var(--cream); margin-bottom: 0.8rem; }
+.craft .signup__row { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.craft .signup__input { flex: 1; min-width: 190px; background: var(--charcoal-2); border: 1px solid var(--line-dark); border-radius: var(--r-pill); padding: 0.85em 1.25em; color: var(--cream); transition: border-color var(--dur-1); }
+.craft .signup__input::placeholder { color: color-mix(in oklch, var(--cream-soft) 70%, transparent); }
+.craft .signup__input:focus-visible { border-color: var(--amber); outline: none; }
+.craft .footer__cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.craft .footer__col h3 { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--amber); margin-bottom: 1rem; font-weight: 500; }
+.craft .footer__col a { display: block; color: var(--cream-soft); padding: 0.36rem 0; font-size: 0.95rem; transition: color var(--dur-1); }
+.craft .footer__col a:hover { color: var(--cream); }
+.craft .footer__legal { border-top: 1px solid var(--line-dark); padding-block: 1.5rem 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.craft .footer__social { display: flex; gap: 0.7rem; }
+.craft .footer__social a { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; color: var(--cream-soft); border: 1px solid var(--line-dark); transition: color var(--dur-1), border-color var(--dur-1); }
+.craft .footer__social a:hover { color: var(--amber); border-color: var(--amber); }
+.craft .footer__meta { font-size: 0.8rem; color: var(--cream-soft); opacity: 0.85; }
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 1080px) {
+  .craft .dna { grid-template-columns: 1fr; gap: clamp(1.8rem, 4vw, 2.6rem); }
+  .craft .dna__stage { order: -1; }
+  .craft .dna__side { max-width: 620px; margin-inline: auto; width: 100%; }
+}
+
+@media (max-width: 980px) {
+  .craft .footer__inner { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+@media (max-width: 900px) {
+  /* Mobile navigation — drenched panel */
+  .craft .nav {
+    position: fixed; inset: 0 0 0 auto; width: min(84vw, 360px);
+    flex-direction: column; align-items: flex-start; justify-content: center; gap: 1.5rem;
+    background: var(--burgundy); color: var(--cream); padding: 5.5rem 2.2rem;
+    transform: translateX(105%); transition: transform var(--dur-2) var(--ease-expo);
+    box-shadow: var(--shadow-lg); z-index: 90;
+  }
+  .craft .nav::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(80% 55% at 100% 0%, color-mix(in oklch, var(--amber) 15%, transparent), transparent 60%);
+  }
+  .craft .nav.is-open { transform: none; }
+  .craft .nav a { font-family: var(--font-display); font-size: 1.7rem; font-weight: 700; color: var(--cream); text-transform: none; letter-spacing: -0.01em; position: relative; z-index: 1; }
+  .craft .nav a::after { display: none; }
+  .craft .nav-toggle { display: inline-grid; place-items: center; z-index: 95; }
+
+  /* Hero → stacked cover */
+  .craft .hero { display: block; background: var(--burgundy); }
+  .craft .hero::before { display: none; }
+  .craft .hero__media { position: relative; width: 100%; height: 44vh; min-height: 300px; overflow: hidden; }
+  .craft .hero__media img { top: 0; height: 100%; object-position: center 42%; }
+  .craft .hero__scrim {
+    inset: 0 0 auto 0; height: 44vh; min-height: 300px;
+    background:
+      linear-gradient(180deg, color-mix(in oklch, var(--burgundy-deep) 55%, transparent), transparent 22%),
+      linear-gradient(0deg, var(--burgundy) 0%, var(--burgundy) 8%, color-mix(in oklch, var(--burgundy) 40%, transparent) 35%, transparent 65%);
+  }
+  .craft .hero__inner { display: block; min-height: 0; padding: 2.4rem var(--gutter) 3.2rem; }
+  .craft .hero__mast { display: none; }
+  .craft .hero__index { display: none; }
+  .craft .hero__text { padding-block: 0; margin-top: 1.6rem; }
+  .craft .hero__foot { margin-top: 2rem; flex-direction: column; align-items: flex-start; gap: 1.1rem; }
+  .craft .hero__scroll { display: none; }
+
+  /* Stack the two-column sections */
+  .craft .intro__grid, .craft .mood__grid, .craft .sustain__grid,
+  .craft .feed__head, .craft .voices__grid, .craft .voices__more { grid-template-columns: 1fr; }
+  .craft .intro__grid { gap: 1.6rem; align-items: start; }
+  .craft .intro__media { order: 2; }
+  .craft .voices__figure { display: none; }
+  .craft .feed__head { gap: 1rem; align-items: start; }
+
+  /* Mood overlap resets to a gentle stack */
+  .craft .mood__panel-wrap { padding-bottom: 0; }
+  .craft .cal-card { width: 100%; margin-left: 0; margin-top: -2rem; }
+
+  /* Feed → single column, feature first */
+  .craft .feed__grid { grid-template-columns: 1fr; }
+  .craft .card--feature { grid-column: auto; grid-row: auto; }
+  .craft .card--feature .card__media { aspect-ratio: 4 / 3; min-height: 0; }
+
+  .craft .footer__legal { justify-content: flex-start; }
+}
+
+/* Desktop-only mood overlap */
+@media (min-width: 901px) {
+  .craft .mood__panel-wrap { padding-bottom: 2.5rem; }
+  .craft .cal-card { width: 88%; margin-left: auto; margin-top: -3.5rem; }
+}
+
+@media (max-width: 560px) {
+  .craft .footer__cols { grid-template-columns: 1fr 1fr; }
+  .craft .learn__points li { grid-template-columns: 1fr; gap: 0.3rem; }
+  .craft .hero__mast { font-size: 0.66rem; letter-spacing: 0.18em; }
+  .craft .voices__more { grid-template-columns: 1fr; }
+}
+
+html.nav-open { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .craft .hero__scroll svg { animation: none; }
+}
