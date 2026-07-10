@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Atelier — Fréscopa</title>
+<!-- Claude Design runtime expects React/ReactDOM on window (the design tool injects
+     them in preview). Provide them so this container renders standalone. -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/fr-scopa-design-system-40681532-d1a7-4dcb-94af-093bb0d56f27/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/fr-scopa-design-system-40681532-d1a7-4dcb-94af-093bb0d56f27/tokens/colors.css">
+<link rel="stylesheet" href="_ds/fr-scopa-design-system-40681532-d1a7-4dcb-94af-093bb0d56f27/tokens/typography.css">
+<link rel="stylesheet" href="_ds/fr-scopa-design-system-40681532-d1a7-4dcb-94af-093bb0d56f27/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/fr-scopa-design-system-40681532-d1a7-4dcb-94af-093bb0d56f27/tokens/effects.css">
+<link rel="stylesheet" href="_ds/fr-scopa-design-system-40681532-d1a7-4dcb-94af-093bb0d56f27/tokens/base.css">
+<link rel="stylesheet" href="_ds/fr-scopa-design-system-40681532-d1a7-4dcb-94af-093bb0d56f27/styles.css">
+<script src="_ds/fr-scopa-design-system-40681532-d1a7-4dcb-94af-093bb0d56f27/_ds_bundle.js"></script>
+<style>
+  body { margin: 0; }
+  a { color: var(--terracotta); text-decoration: none; }
+  a:hover { color: var(--terracotta-deep); }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "The Atelier",
+  "sku": "FR-ATL-001",
+  "brand": { "@type": "Brand", "name": "Fréscopa" },
+  "category": "Bean-to-cup coffee machine",
+  "description": "The first Fréscopa machine with a feel for your mornings. It learns your taste, reads the shape of your day, and quietly takes care of the rest.",
+  "material": "Anodised aluminium, oak trim",
+  "color": ["Cream", "Charcoal", "Terracotta"],
+  "weight": { "@type": "QuantitativeValue", "value": "9.8", "unitCode": "KGM" },
+  "offers": {
+    "@type": "Offer",
+    "price": "2199",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "Atelier.dc.html",
+    "shippingDetails": { "@type": "OfferShippingDetails", "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "USD" }, "deliveryTime": { "@type": "ShippingDeliveryTime", "transitTime": { "@type": "QuantitativeValue", "minValue": 3, "maxValue": 5, "unitCode": "DAY" } } },
+    "hasMerchantReturnPolicy": { "@type": "MerchantReturnPolicy", "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow", "merchantReturnDays": 30 }
+  },
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "214" },
+  "review": [
+    { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "author": { "@type": "Person", "name": "Priya M." }, "reviewBody": "It simply knew what I wanted, before I did. The first machine I've owned that got better the longer I had it." },
+    { "@type": "Review", "reviewRating": { "@type": "Rating", "ratingValue": "5" }, "author": { "@type": "Person", "name": "Daniel R." }, "reviewBody": "It started reordering beans before I noticed, and warming up before my alarm. The counter feels bare without it." }
+  ],
+  "additionalProperty": [
+    { "@type": "PropertyValue", "name": "Dimensions (W×D×H)", "value": "32 × 24 × 41 cm" },
+    { "@type": "PropertyValue", "name": "Water tank", "value": "1.8 L, removable" },
+    { "@type": "PropertyValue", "name": "Bean hopper", "value": "250 g" },
+    { "@type": "PropertyValue", "name": "Pump pressure", "value": "15 bar" },
+    { "@type": "PropertyValue", "name": "Connectivity", "value": "Wi-Fi 2.4/5 GHz, Bluetooth 5.0" },
+    { "@type": "PropertyValue", "name": "Taste profiles", "value": "Up to 6 household members" },
+    { "@type": "PropertyValue", "name": "Power", "value": "1500 W, 220–240 V" },
+    { "@type": "PropertyValue", "name": "Grinding noise", "value": "58 dB" },
+    { "@type": "PropertyValue", "name": "Warranty", "value": "2 years parts and labour" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is it a hassle to set up?", "acceptedAnswer": { "@type": "Answer", "text": "No. Delivery includes a full setup, so the Atelier is pouring before we leave. Support is available in-app, by phone, or at any Fréscopa café if anything feels off." } },
+    { "@type": "Question", "name": "Do I have to buy Fréscopa pods?", "acceptedAnswer": { "@type": "Answer", "text": "No. The Atelier runs on whole beans and works with your own. Compostable Fréscopa pods are optional, not required." } },
+    { "@type": "Question", "name": "How long until it learns my taste?", "acceptedAnswer": { "@type": "Answer", "text": "It adjusts from the first cup and settles into your preferences within about a week, typically before the first 250 g bag runs out." } },
+    { "@type": "Question", "name": "Will it wake the whole house?", "acceptedAnswer": { "@type": "Answer", "text": "The grinder runs at about 58 dB, quiet enough to pour a cup without disturbing anyone still asleep." } },
+    { "@type": "Question", "name": "What if it isn't for me?", "acceptedAnswer": { "@type": "Answer", "text": "There is a 30-night trial. If it does not earn its place, returns are free and fully covered." } },
+    { "@type": "Question", "name": "Is it a chore to clean?", "acceptedAnswer": { "@type": "Answer", "text": "It rinses itself after every cup and the removable parts are dishwasher-safe. A full clean takes about a minute." } }
+  ]
+}
+</script>
+</helmet>
+<template id="__bundler_thumbnail">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+    <rect width="400" height="400" fill="#5b1c22"/>
+    <g transform="translate(120 130)" fill="none" stroke="#f1e9db" stroke-width="10" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 40 h120 v40 a60 60 0 0 1 -60 60 h0 a60 60 0 0 1 -60 -60 z"/>
+      <path d="M128 55 h24 a26 26 0 0 1 0 52 h-4"/>
+      <path d="M40 12 q10 -14 0 -28 M70 12 q10 -14 0 -28 M100 12 q10 -14 0 -28" stroke="#eaa33a" stroke-width="8"/>
+    </g>
+  </svg>
+</template>
+<div style="font-family: var(--font-body); color: var(--ink); background: var(--paper);">
+
+  <x-import component-from-global-scope="FrScopaDesignSystem_406815.SiteHeader" logo-light="assets/frescopa-logo-light.svg" logo-dark="assets/frescopa-logo.svg" nav-items="{{ nav }}" active-href="Machines.dc.html" brand-href="Home.dc.html" cart-count="{{ cart }}" on-account="{{ goAccount }}" solid="{{ true }}" hint-size="100%,72px"></x-import>
+
+  <!-- ===== Product ===== -->
+  <section style="background: var(--paper); padding: calc(72px + clamp(1.5rem, 1rem + 2vw, 2.6rem)) 0 var(--section-y);">
+    <div style="max-width: var(--content); margin-inline: auto; padding-inline: var(--gutter);">
+      <nav style="font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; color: var(--ink-soft); display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+        <a href="Home.dc.html" style="color: var(--ink-soft);">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="Machines.dc.html" style="color: var(--ink-soft);">Machines</a>
+        <span aria-hidden="true">/</span>
+        <span style="color: var(--ink);">The Atelier</span>
+      </nav>
+
+      <div style="display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(2rem, 1rem + 4vw, 4rem); margin-top: 2rem; align-items: stretch;">
+
+        <!-- Gallery -->
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <div style="border-radius: var(--r-xl); overflow: hidden; flex: 1; min-height: 340px; background: var(--paper-3); box-shadow: var(--shadow-md);">
+            <sc-if value="{{ show0 }}" hint-placeholder-val="{{ true }}">
+              <img src="assets/images/hero-machine.jpg" alt="The Atelier on a sunlit counter." style="width: 100%; height: 100%; object-fit: cover; object-position: center 44%;" />
+            </sc-if>
+            <sc-if value="{{ show1 }}" hint-placeholder-val="{{ false }}">
+              <img src="assets/images/espresso-pour.jpg" alt="Espresso pouring from the Atelier." style="width: 100%; height: 100%; object-fit: cover; object-position: center 44%;" />
+            </sc-if>
+            <sc-if value="{{ show2 }}" hint-placeholder-val="{{ false }}">
+              <img src="assets/images/sustainability.jpg" alt="Grounds returned to soil." style="width: 100%; height: 100%; object-fit: cover; object-position: center 44%;" />
+            </sc-if>
+            <sc-if value="{{ show3 }}" hint-placeholder-val="{{ false }}">
+              <img src="assets/images/cafe-interior.jpg" alt="The Atelier at home in a warm kitchen." style="width: 100%; height: 100%; object-fit: cover; object-position: center 44%;" />
+            </sc-if>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem;">
+            <button type="button" onClick="{{ sel0 }}" aria-label="The Atelier on a sunlit counter." style="{{ thumb0Style }}"><img src="assets/images/hero-machine.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;" /></button>
+            <button type="button" onClick="{{ sel1 }}" aria-label="Espresso pouring from the Atelier." style="{{ thumb1Style }}"><img src="assets/images/espresso-pour.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;" /></button>
+            <button type="button" onClick="{{ sel2 }}" aria-label="Grounds returned to soil." style="{{ thumb2Style }}"><img src="assets/images/sustainability.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;" /></button>
+            <button type="button" onClick="{{ sel3 }}" aria-label="The Atelier at home in a warm kitchen." style="{{ thumb3Style }}"><img src="assets/images/cafe-interior.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover;" /></button>
+          </div>
+        </div>
+
+        <!-- Buy box -->
+        <div style="max-width: 460px;">
+          <span style="font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; color: var(--terracotta);">Bean-to-cup machine</span>
+          <h1 style="font-family: var(--font-display); font-weight: 800; letter-spacing: -0.02em; font-size: clamp(2.2rem, 1.6rem + 2.4vw, 3.2rem); color: var(--burgundy); margin-top: 0.6rem; line-height: 1.02;">The Atelier</h1>
+          <a href="#reviews" style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.7rem; color: var(--ink-soft); font-size: 0.9rem;">
+            <span style="display: inline-flex; gap: 2px;"><svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)" aria-hidden="true"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg><svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)" aria-hidden="true"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg><svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)" aria-hidden="true"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg><svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)" aria-hidden="true"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg><svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)" aria-hidden="true"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg></span>
+            <span>4.8 · 214 reviews</span>
+          </a>
+          <p style="color: var(--ink-soft); font-size: 1.0625rem; line-height: 1.6; margin-top: 1rem;">The first Fréscopa machine with a feel for your mornings. It learns what you love, reads the shape of your day, and quietly takes care of the rest.</p>
+
+          <div style="display: flex; align-items: baseline; gap: 0.8rem; margin-top: 1.6rem;">
+            <span style="font-family: var(--font-display); font-weight: 800; font-size: 2rem; color: var(--ink);">$2,199</span>
+            <span style="color: var(--ink-soft); font-size: 0.95rem;">or $184/mo for 12 months</span>
+          </div>
+
+          <!-- Finish -->
+          <div style="margin-top: 1.8rem;">
+            <p style="font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.72rem; color: var(--ink); margin-bottom: 0.7rem;">Finish — {{ selectedFinish }}</p>
+            <div style="display: flex; gap: 0.7rem;">
+              <sc-for list="{{ finishPills }}" as="f" hint-placeholder-count="3">
+                <button type="button" onClick="{{ f.onClick }}" aria-label="{{ f.name }}" title="{{ f.name }}" style="{{ f.style }}"></button>
+              </sc-for>
+            </div>
+          </div>
+
+          <!-- Quantity + add -->
+          <div style="display: flex; gap: 0.9rem; align-items: stretch; margin-top: 1.8rem; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; border: 1px solid var(--line); border-radius: var(--r-pill); background: var(--surface-card); overflow: hidden;">
+              <button type="button" onClick="{{ dec }}" aria-label="Decrease quantity" style="border: none; background: transparent; width: 44px; height: 48px; font-size: 1.3rem; color: var(--ink); cursor: pointer;">−</button>
+              <span style="min-width: 28px; text-align: center; font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--ink);">{{ qty }}</span>
+              <button type="button" onClick="{{ inc }}" aria-label="Increase quantity" style="border: none; background: transparent; width: 44px; height: 48px; font-size: 1.3rem; color: var(--ink); cursor: pointer;">+</button>
+            </div>
+            <div style="flex: 1; min-width: 200px;">
+              <x-import component-from-global-scope="FrScopaDesignSystem_406815.Button" variant="terracotta" onClick="{{ addAction }}" style="{{ addBtnStyle }}" hint-size="100%,48px">{{ addLabel }}</x-import>
+            </div>
+          </div>
+
+          <!-- Trust -->
+          <div style="display: flex; flex-direction: column; gap: 0.7rem; margin-top: 2rem; padding-top: 1.6rem; border-top: 1px solid var(--line);">
+            <div style="display: flex; align-items: center; gap: 0.7rem; color: var(--ink-soft); font-size: 0.95rem;"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--terracotta)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h13v10H3z"/><path d="M16 10h3l2 2.5V17h-5z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg><span>Free delivery, and we'll set it up for you.</span></div>
+            <div style="display: flex; align-items: center; gap: 0.7rem; color: var(--ink-soft); font-size: 0.95rem;"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--terracotta)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.4-3 8-7 10-4-2-7-5.6-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><span>Two-year workshop guarantee.</span></div>
+            <div style="display: flex; align-items: center; gap: 0.7rem; color: var(--ink-soft); font-size: 0.95rem;"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--terracotta)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3"/><path d="M21 4v5h-5"/></svg><span>Thirty mornings to fall for it, or send it back.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Jump guide ===== -->
+  <section aria-label="Jump to a section" style="background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+    <div style="max-width: var(--content); margin-inline: auto; padding: 1rem var(--gutter); display: flex; align-items: center; gap: 0.8rem 1.3rem; flex-wrap: wrap;">
+      <span style="font-family: var(--font-display); font-weight: 700; color: var(--burgundy); font-size: 1.05rem;">Still deciding?</span>
+      <span style="font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.7rem; color: var(--ink-soft);">Jump to</span>
+      <nav style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+        <a href="#how" style="color: var(--ink); font-size: 0.88rem; padding: 0.4rem 0.9rem; border: 1px solid var(--line); border-radius: var(--r-pill);">How it works</a>
+        <a href="#specs" style="color: var(--ink); font-size: 0.88rem; padding: 0.4rem 0.9rem; border: 1px solid var(--line); border-radius: var(--r-pill);">Specifications</a>
+        <a href="#reviews" style="color: var(--ink); font-size: 0.88rem; padding: 0.4rem 0.9rem; border: 1px solid var(--line); border-radius: var(--r-pill);">Reviews</a>
+        <a href="#faq" style="color: var(--ink); font-size: 0.88rem; padding: 0.4rem 0.9rem; border: 1px solid var(--line); border-radius: var(--r-pill);">Questions</a>
+        <a href="#bundles" style="color: var(--ink); font-size: 0.88rem; padding: 0.4rem 0.9rem; border: 1px solid var(--line); border-radius: var(--r-pill);">Bundles &amp; price</a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ===== How it works (mechanism) ===== -->
+  <section id="how" style="scroll-margin-top: 90px; background: var(--paper-2); padding: var(--section-y) 0;">
+    <div style="max-width: var(--content); margin-inline: auto; padding-inline: var(--gutter);">
+      <div style="max-width: 52ch;">
+        <x-import component-from-global-scope="FrScopaDesignSystem_406815.Eyebrow" hint-size="180px,20px">How it actually works</x-import>
+        <h2 style="font-family: var(--font-display); font-weight: 800; letter-spacing: -0.02em; font-size: clamp(2rem, 1.4rem + 2.4vw, 3rem); color: var(--burgundy); margin-top: 1rem;">It learns your taste. Here's how.</h2>
+        <p style="color: var(--ink-soft); font-size: 1.125rem; margin-top: 1.1rem; line-height: 1.6;">Not a preset menu, and not a guess. The Atelier works the way a good barista does — it pays attention, remembers, and adjusts. Four quiet steps, running every morning.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 3rem;">
+        <sc-for list="{{ howTabs }}" as="t" hint-placeholder-count="4">
+          <button type="button" onClick="{{ t.onClick }}" aria-pressed="{{ t.active }}" style="{{ t.style }}">
+            <div style="{{ t.numStyle }}">{{ t.n }}</div>
+            <h3 style="font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--burgundy); margin-top: 0.9rem;">{{ t.title }}</h3>
+            <p style="color: var(--ink-soft); font-size: 0.9rem; margin-top: 0.4rem; line-height: 1.5;">{{ t.short }}</p>
+          </button>
+        </sc-for>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.6rem, 1rem + 4vw, 3.5rem); align-items: center; margin-top: 1.4rem; background: var(--surface-card); border: 1px solid var(--line); border-radius: var(--r-xl); padding: clamp(1.6rem, 1rem + 2vw, 2.6rem); box-shadow: var(--shadow-md);">
+        <div>
+          <span style="font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; color: var(--terracotta);">Step {{ activeN }} of 4</span>
+          <h3 style="font-family: var(--font-display); font-weight: 800; font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2rem); color: var(--burgundy); margin-top: 0.6rem; line-height: 1.1;">{{ detailTitle }}</h3>
+          <p style="color: var(--ink-soft); font-size: 1.0625rem; line-height: 1.62; margin-top: 1rem;">{{ detailBody }}</p>
+        </div>
+        <div style="border-radius: var(--r-lg); overflow: hidden; aspect-ratio: 4 / 3; background: var(--paper-3); box-shadow: var(--shadow-sm);">
+          <sc-if value="{{ howShow0 }}" hint-placeholder-val="{{ true }}"><img src="assets/images/espresso-pour.jpg" alt="Sensors reading every pour." style="width: 100%; height: 100%; object-fit: cover;" /></sc-if>
+          <sc-if value="{{ howShow1 }}" hint-placeholder-val="{{ false }}"><img src="assets/images/hero-machine.jpg" alt="The Atelier building your flavour DNA." style="width: 100%; height: 100%; object-fit: cover; object-position: center 42%;" /></sc-if>
+          <sc-if value="{{ howShow2 }}" hint-placeholder-val="{{ false }}"><img src="assets/images/cafe-interior.jpg" alt="Reading the shape of the morning." style="width: 100%; height: 100%; object-fit: cover;" /></sc-if>
+          <sc-if value="{{ howShow3 }}" hint-placeholder-val="{{ false }}"><img src="assets/images/sustainability.jpg" alt="Acting on its own, right down to the grounds." style="width: 100%; height: 100%; object-fit: cover;" /></sc-if>
+        </div>
+      </div>
+      <p style="color: var(--ink-soft); font-size: 0.95rem; margin-top: 1.8rem; max-width: 60ch;">Your flavour DNA and morning routines stay on your machine and your account. You can review what it has learned, correct it, or wipe it clean, any time.</p>
+    </div>
+  </section>
+
+  <!-- ===== Video ===== -->
+  <section style="position: relative; background: var(--charcoal); color: var(--cream); padding: var(--section-y) 0; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background: radial-gradient(70% 90% at 50% -10%, color-mix(in oklch, var(--amber) 14%, transparent), transparent 60%); pointer-events: none;"></div>
+    <div style="position: relative; max-width: 960px; margin-inline: auto; padding-inline: var(--gutter); text-align: center;">
+      <x-import component-from-global-scope="FrScopaDesignSystem_406815.Eyebrow" tone="light" hint-size="180px,20px">See it in the morning</x-import>
+      <h2 style="font-family: var(--font-display); font-weight: 800; letter-spacing: -0.02em; font-size: clamp(2rem, 1.4rem + 2.4vw, 3rem); color: var(--cream); margin: 1rem auto 0; max-width: 20ch;">Two minutes in a real kitchen.</h2>
+      <div style="position: relative; margin-top: 2.4rem; border-radius: var(--r-xl); overflow: hidden; aspect-ratio: 16 / 9; box-shadow: var(--shadow-lg);">
+        <img src="assets/images/hero-machine.jpg" alt="A morning with the Atelier." style="width: 100%; height: 100%; object-fit: cover; object-position: center 42%;" />
+        <div style="position: absolute; inset: 0; background: linear-gradient(0deg, oklch(0.16 0.02 45 / 0.5), oklch(0.16 0.02 45 / 0.15));"></div>
+        <button type="button" aria-label="Play the film" style="position: absolute; inset: 0; margin: auto; width: 88px; height: 88px; border-radius: 50%; background: var(--paper); border: none; cursor: pointer; display: grid; place-items: center; box-shadow: var(--shadow-lg);">
+          <svg viewBox="0 0 24 24" width="32" height="32" fill="var(--terracotta)" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <span style="position: absolute; bottom: 1rem; right: 1rem; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--cream); background: oklch(0.16 0.02 45 / 0.55); padding: 0.35rem 0.7rem; border-radius: var(--r-pill); backdrop-filter: blur(6px);">2:14</span>
+      </div>
+      <p style="color: var(--cream-soft); font-size: 0.95rem; margin-top: 1.2rem;">A short film is in production. Drop your own reel in here when it's ready.</p>
+    </div>
+  </section>
+
+  <!-- ===== Spec chips ===== -->
+  <section style="background: var(--paper); padding: var(--section-y) 0;">
+    <div style="max-width: var(--content); margin-inline: auto; padding-inline: var(--gutter);">
+      <x-import component-from-global-scope="FrScopaDesignSystem_406815.Eyebrow" hint-size="160px,20px">The claims, answered</x-import>
+      <h2 style="font-family: var(--font-display); font-weight: 800; letter-spacing: -0.02em; font-size: clamp(1.8rem, 1.3rem + 2vw, 2.8rem); color: var(--burgundy); margin-top: 1rem; max-width: 20ch;">Every promise, backed up.</h2>
+      <div style="margin-top: 2.2rem; max-width: 840px;">
+        <sc-for list="{{ claims }}" as="c" hint-placeholder-count="6">
+          <div style="border-bottom: 1px solid var(--line);">
+            <button type="button" onClick="{{ c.onClick }}" aria-expanded="{{ c.open }}" style="width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; background: none; border: none; cursor: pointer; text-align: left; padding: 1.15rem 0;">
+              <span style="display: flex; align-items: center; gap: 0.75rem;">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--terracotta)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4 10-11"/></svg>
+                <span style="font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--burgundy);">{{ c.claim }}</span>
+              </span>
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--terracotta)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="{{ c.iconStyle }}" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <sc-if value="{{ c.open }}" hint-placeholder-val="{{ false }}">
+              <p style="color: var(--ink-soft); font-size: 1.0625rem; line-height: 1.62; padding: 0 2rem 1.3rem 2.15rem; margin: 0;">{{ c.answer }}</p>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Full specifications ===== -->
+  <section id="specs" style="scroll-margin-top: 90px; background: var(--paper-2); padding: var(--section-y) 0;">
+    <div style="max-width: var(--content); margin-inline: auto; padding-inline: var(--gutter);">
+      <x-import component-from-global-scope="FrScopaDesignSystem_406815.Eyebrow" hint-size="160px,20px">Every detail</x-import>
+      <h2 style="font-family: var(--font-display); font-weight: 800; letter-spacing: -0.02em; font-size: clamp(1.8rem, 1.3rem + 2vw, 2.8rem); color: var(--burgundy); margin-top: 1rem; max-width: 18ch;">The full specification.</h2>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(1.6rem, 1rem + 2vw, 3rem); margin-top: 2.8rem;">
+
+        <div>
+          <h3 style="font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; color: var(--terracotta); margin: 0 0 0.4rem;">Design and build</h3>
+          <div style="display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line);"><span style="color: var(--ink-soft); font-size: 0.95rem;">Dimensions (W×D×H)</span><span style="color: var(--ink); font-size: 0.95rem; font-weight: 500; text-align: right;">32 × 24 × 41 cm</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line);"><span style="color: var(--ink-soft); font-size: 0.95rem;">Weight</span><span style="color: var(--ink); font-size: 0.95rem; font-weight: 500; text-align: right;">9.8 kg</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line);"><span style="color: var(--ink-soft); font-size: 0.95rem;">Materials</span><span style="color: var(--ink); font-size: 0.95rem; font-weight: 500; text-align: right;">Anodised aluminium, oak trim</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line);"><span style="color: var(--ink-soft); font-size: 0.95rem;">Finishes</span><span style="color: var(--ink); font-size: 0.95rem; font-weight: 500; text-align: right;">Cream, Charcoal, Terracotta</span></div>
+        </div>
+
+        <div>
+          <h3 style="font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; color: var(--terracotta); margin: 0 0 0.4rem;">Brewing</h3>
+          <div style="display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line);"><span style="color: var(--ink-soft); font-size: 0.95rem;">Water tank</span><span style="color: var(--ink); font-size: 0.95rem; font-weight: 500; text-align: right;">1.8 L, removable</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line);"><span style="color: var(--ink-soft); font-size: 0.95rem;">Bean hopper</span><span style="color: var(--ink); font-size: 0.95rem; font-weight: 500; text-align: right;">250 g</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line);"><span style="color: var(--ink-soft); font-size: 0.95rem;">Pump pressure</span><span style="color: var(--ink); font-size: 0.95rem; font-weight: 500; text-align: right;">15 bar</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line);"><span style="color: var(--ink-soft); font-size: 0.95rem;">Drinks</span><span style="color: var(--ink); font-size: 0.95rem; font-weight: 500; text-align: right;">Espresso, filter, long black, cappuccino, latte, tea</span></div>
+        </div>
+
+        <div>
+          <h3 style="font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; color: var(--terracotta); margin: 0 0 0.4rem;">Intelligence and connectivity</h3>
+          <div style="display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line);"><span style="color: var(--ink-soft); font-size: 0.95rem;">Learning</span><span style="color: var(--ink); font-size: 0.95rem; font-weight: 500; text-align: right;">Adapts over ~7 days</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line);"><span style="color: var(--ink-soft); font-size: 0.95rem;">Taste profiles</span><span style="color: var(--ink); font-size: 0.95rem; font-weight: 500; text-align: right;">Up to 6 household members</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line);"><span style="color: var(--ink-soft); font-size: 0.95rem;">Connectivity</span><span style="color: var(--ink); font-size: 0.95rem; font-weight: 500; text-align: right;">Wi-Fi 2.4/5 GHz, Bluetooth 5.0</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line);"><span style="color: var(--ink-soft); font-size: 0.95rem;">App</span><span style="color: var(--ink); font-size: 0.95rem; font-weight: 500; text-align: right;">iOS 15+ / Android 10+</span></div>
+        </div>
+
+        <div>
+          <h3 style="font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; color: var(--terracotta); margin: 0 0 0.4rem;">Power and sound</h3>
+          <div style="display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line);"><span style="color: var(--ink-soft); font-size: 0.95rem;">Power</span><span style="color: var(--ink); font-size: 0.95rem; font-weight: 500; text-align: right;">1500 W</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line);"><span style="color: var(--ink-soft); font-size: 0.95rem;">Voltage</span><span style="color: var(--ink); font-size: 0.95rem; font-weight: 500; text-align: right;">220–240 V</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line);"><span style="color: var(--ink-soft); font-size: 0.95rem;">Grinding noise</span><span style="color: var(--ink); font-size: 0.95rem; font-weight: 500; text-align: right;">58 dB</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line);"><span style="color: var(--ink-soft); font-size: 0.95rem;">Auto-off</span><span style="color: var(--ink); font-size: 0.95rem; font-weight: 500; text-align: right;">After 20 min idle</span></div>
+        </div>
+
+        <div>
+          <h3 style="font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; color: var(--terracotta); margin: 0 0 0.4rem;">Sustainability</h3>
+          <div style="display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line);"><span style="color: var(--ink-soft); font-size: 0.95rem;">Pods</span><span style="color: var(--ink); font-size: 0.95rem; font-weight: 500; text-align: right;">Compostable</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line);"><span style="color: var(--ink-soft); font-size: 0.95rem;">Grounds</span><span style="color: var(--ink); font-size: 0.95rem; font-weight: 500; text-align: right;">Eject to compost drawer</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line);"><span style="color: var(--ink-soft); font-size: 0.95rem;">Energy</span><span style="color: var(--ink); font-size: 0.95rem; font-weight: 500; text-align: right;">A+ rated</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line);"><span style="color: var(--ink-soft); font-size: 0.95rem;">Packaging</span><span style="color: var(--ink); font-size: 0.95rem; font-weight: 500; text-align: right;">Plastic-free</span></div>
+        </div>
+
+        <div>
+          <h3 style="font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; color: var(--terracotta); margin: 0 0 0.4rem;">Delivery and returns</h3>
+          <div style="display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line);"><span style="color: var(--ink-soft); font-size: 0.95rem;">Delivery</span><span style="color: var(--ink); font-size: 0.95rem; font-weight: 500; text-align: right;">Free, 3–5 days</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line);"><span style="color: var(--ink-soft); font-size: 0.95rem;">Setup</span><span style="color: var(--ink); font-size: 0.95rem; font-weight: 500; text-align: right;">Included at delivery</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line);"><span style="color: var(--ink-soft); font-size: 0.95rem;">Trial</span><span style="color: var(--ink); font-size: 0.95rem; font-weight: 500; text-align: right;">30 nights, free returns</span></div>
+          <div style="display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line);"><span style="color: var(--ink-soft); font-size: 0.95rem;">Warranty</span><span style="color: var(--ink); font-size: 0.95rem; font-weight: 500; text-align: right;">2 years parts and labour</span></div>
+        </div>
+
+      </div>
+
+      <div style="margin-top: clamp(2.5rem, 1.5rem + 3vw, 4rem); background: var(--surface-card); border: 1px solid var(--line); border-radius: var(--r-xl); padding: clamp(1.6rem, 1rem + 2vw, 2.6rem); box-shadow: var(--shadow-sm);">
+        <h3 style="font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; color: var(--burgundy); margin: 0;">In the box</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.6rem 2rem; margin-top: 1.2rem;">
+          <div style="display: flex; align-items: center; gap: 0.6rem; color: var(--ink-soft); font-size: 0.98rem;"><span style="color: var(--terracotta);" aria-hidden="true">—</span>The Atelier machine</div>
+          <div style="display: flex; align-items: center; gap: 0.6rem; color: var(--ink-soft); font-size: 0.98rem;"><span style="color: var(--terracotta);" aria-hidden="true">—</span>Starter bag of house beans, 250 g</div>
+          <div style="display: flex; align-items: center; gap: 0.6rem; color: var(--ink-soft); font-size: 0.98rem;"><span style="color: var(--terracotta);" aria-hidden="true">—</span>Reusable pod and scoop</div>
+          <div style="display: flex; align-items: center; gap: 0.6rem; color: var(--ink-soft); font-size: 0.98rem;"><span style="color: var(--terracotta);" aria-hidden="true">—</span>Water filter cartridge</div>
+          <div style="display: flex; align-items: center; gap: 0.6rem; color: var(--ink-soft); font-size: 0.98rem;"><span style="color: var(--terracotta);" aria-hidden="true">—</span>Quick-start card</div>
+          <div style="display: flex; align-items: center; gap: 0.6rem; color: var(--ink-soft); font-size: 0.98rem;"><span style="color: var(--terracotta);" aria-hidden="true">—</span>Power cable</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Flavour DNA ===== -->
+  <section id="dna" style="background: var(--paper); padding: var(--section-y) 0;">
+    <div style="max-width: var(--content); margin-inline: auto; padding-inline: var(--gutter); display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 1rem + 4vw, 4rem); align-items: center;">
+      <div>
+        <x-import component-from-global-scope="FrScopaDesignSystem_406815.Eyebrow" hint-size="180px,20px">How it learns you</x-import>
+        <h2 style="font-family: var(--font-display); font-weight: 800; letter-spacing: -0.02em; font-size: clamp(2rem, 1.4rem + 2.4vw, 3rem); color: var(--burgundy); margin-top: 1rem;">Your taste, drawn one cup at a time.</h2>
+        <p style="color: var(--ink-soft); font-size: 1.125rem; margin-top: 1.2rem; line-height: 1.6; max-width: 46ch;">We call the picture the Atelier builds your flavour DNA. Tap a profile to see how a Tuesday, a slow Sunday, and a late evening each pour a little differently.</p>
+      </div>
+      <div style="max-width: 460px; width: 100%; margin-inline: auto;">
+        <x-import component-from-global-scope="FrScopaDesignSystem_406815.FlavourDNA" default-profile="weekday" hint-size="100%,560px"></x-import>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Reviews ===== -->
+  <section id="reviews" style="scroll-margin-top: 90px; background: var(--paper-2); padding: var(--section-y) 0;">
+    <div style="max-width: var(--content); margin-inline: auto; padding-inline: var(--gutter);">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap;">
+        <div style="max-width: 30ch;">
+          <x-import component-from-global-scope="FrScopaDesignSystem_406815.Eyebrow" hint-size="160px,20px">What owners say</x-import>
+          <h2 style="font-family: var(--font-display); font-weight: 800; letter-spacing: -0.02em; font-size: clamp(2rem, 1.4rem + 2.4vw, 3rem); color: var(--burgundy); margin-top: 1rem;">The verdict, three months in.</h2>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-family: var(--font-display); font-weight: 800; font-size: 3rem; color: var(--burgundy); line-height: 1;">4.8</div>
+          <span style="display: inline-flex; gap: 2px; margin-top: 0.4rem;"><svg viewBox="0 0 24 24" width="18" height="18" fill="var(--amber)" aria-hidden="true"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg><svg viewBox="0 0 24 24" width="18" height="18" fill="var(--amber)" aria-hidden="true"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg><svg viewBox="0 0 24 24" width="18" height="18" fill="var(--amber)" aria-hidden="true"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg><svg viewBox="0 0 24 24" width="18" height="18" fill="var(--amber)" aria-hidden="true"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg><svg viewBox="0 0 24 24" width="18" height="18" fill="var(--amber)" aria-hidden="true"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg></span>
+          <p style="color: var(--ink-soft); font-size: 0.9rem; margin-top: 0.4rem;">from 214 verified owners</p>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem; margin-top: 3rem;">
+        <figure style="background: var(--surface-card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 1.8rem; box-shadow: var(--shadow-md); margin: 0; display: flex; flex-direction: column;">
+          <span style="display: inline-flex; gap: 2px;"><svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)" aria-hidden="true"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg><svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)" aria-hidden="true"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg><svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)" aria-hidden="true"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg><svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)" aria-hidden="true"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg><svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)" aria-hidden="true"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg></span>
+          <blockquote style="font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; color: var(--ink); line-height: 1.4; margin: 1rem 0 0; flex: 1;">It simply knew what I wanted, before I did. The first machine I've owned that got better the longer I had it.</blockquote>
+          <figcaption style="color: var(--ink-soft); font-size: 0.9rem; margin-top: 1.2rem;">Priya M. · London · 3 months in</figcaption>
+        </figure>
+        <figure style="background: var(--surface-card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 1.8rem; box-shadow: var(--shadow-md); margin: 0; display: flex; flex-direction: column;">
+          <span style="display: inline-flex; gap: 2px;"><svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)" aria-hidden="true"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg><svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)" aria-hidden="true"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg><svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)" aria-hidden="true"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg><svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)" aria-hidden="true"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg><svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)" aria-hidden="true"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg></span>
+          <blockquote style="font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; color: var(--ink); line-height: 1.4; margin: 1rem 0 0; flex: 1;">I was sceptical at the price. Then it started reordering beans before I noticed, and warming up before my alarm. Now the counter feels bare without it.</blockquote>
+          <figcaption style="color: var(--ink-soft); font-size: 0.9rem; margin-top: 1.2rem;">Daniel R. · Bristol · 5 months in</figcaption>
+        </figure>
+        <figure style="background: var(--surface-card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 1.8rem; box-shadow: var(--shadow-md); margin: 0; display: flex; flex-direction: column;">
+          <span style="display: inline-flex; gap: 2px;"><svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)" aria-hidden="true"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg><svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)" aria-hidden="true"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg><svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)" aria-hidden="true"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg><svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)" aria-hidden="true"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg><svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)" aria-hidden="true"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg></span>
+          <blockquote style="font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; color: var(--ink); line-height: 1.4; margin: 1rem 0 0; flex: 1;">Every person in our house gets their own cup, exactly right, without touching a single dial. Worth every penny.</blockquote>
+          <figcaption style="color: var(--ink-soft); font-size: 0.9rem; margin-top: 1.2rem;">Sana K. · Leeds · 2 months in</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq" style="scroll-margin-top: 90px; background: var(--paper); padding: var(--section-y) 0;">
+    <div style="max-width: var(--content); margin-inline: auto; padding-inline: var(--gutter); display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(2rem, 1rem + 4vw, 4.5rem); align-items: start;">
+      <div>
+        <x-import component-from-global-scope="FrScopaDesignSystem_406815.Eyebrow" hint-size="160px,20px">Before you decide</x-import>
+        <h2 style="font-family: var(--font-display); font-weight: 800; letter-spacing: -0.02em; font-size: clamp(1.9rem, 1.3rem + 2.4vw, 2.8rem); color: var(--burgundy); margin-top: 1rem;">Every last hesitation, handled.</h2>
+        <p style="color: var(--ink-soft); font-size: 1.0625rem; line-height: 1.6; margin-top: 1rem; max-width: 32ch;">The small doubts that keep a good machine in its box. Here's the honest answer to each.</p>
+        <div style="margin-top: 1.6rem;">
+          <x-import component-from-global-scope="FrScopaDesignSystem_406815.TextLink" href="#" arrow="{{ true }}" hint-size="180px,24px">Ask us anything else</x-import>
+        </div>
+      </div>
+      <div>
+        <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="6">
+          <div style="border-bottom: 1px solid var(--line);">
+            <button type="button" onClick="{{ f.onClick }}" aria-expanded="{{ f.open }}" style="width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1.2rem; background: none; border: none; cursor: pointer; text-align: left; padding: 1.35rem 0; font-family: var(--font-display); font-weight: 700; font-size: 1.2rem; color: var(--burgundy);">
+              <span>{{ f.q }}</span>
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--terracotta)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="{{ f.iconStyle }}" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}">
+              <p style="color: var(--ink-soft); font-size: 1.0625rem; line-height: 1.62; padding: 0 2.6rem 1.5rem 0; margin: 0;">{{ f.a }}</p>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Bundles ===== -->
+  <section id="bundles" style="scroll-margin-top: 90px; background: var(--paper-2); padding: var(--section-y) 0;">
+    <div style="max-width: var(--content); margin-inline: auto; padding-inline: var(--gutter);">
+      <div style="max-width: 44ch;">
+        <x-import component-from-global-scope="FrScopaDesignSystem_406815.Eyebrow" hint-size="140px,20px">Ways to buy</x-import>
+        <h2 style="font-family: var(--font-display); font-weight: 800; letter-spacing: -0.02em; font-size: clamp(2rem, 1.4rem + 2.4vw, 3rem); color: var(--burgundy); margin-top: 1rem;">Start with the machine, or the whole ritual.</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem; margin-top: 3rem; align-items: stretch;">
+        <div style="background: var(--surface-card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 2rem; box-shadow: var(--shadow-md); display: flex; flex-direction: column;">
+          <h3 style="font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; color: var(--burgundy);">The Atelier</h3>
+          <p style="color: var(--ink-soft); margin-top: 0.6rem; line-height: 1.6; flex: 1;">The machine, delivered and set up in your kitchen. Everything it needs to start learning you.</p>
+          <div style="font-family: var(--font-display); font-weight: 800; font-size: 1.8rem; color: var(--ink); margin-top: 1.2rem;">$2,199</div>
+          <div style="margin-top: 1.2rem;"><x-import component-from-global-scope="FrScopaDesignSystem_406815.Button" variant="terracotta" onClick="{{ addAction }}" style="width: 100%; justify-content: center;" hint-size="100%,44px">Add to cart</x-import></div>
+        </div>
+        <div style="background: var(--surface-card); border: 2px solid var(--terracotta); border-radius: var(--r-lg); padding: 2rem; box-shadow: var(--shadow-lg); display: flex; flex-direction: column; position: relative;">
+          <div style="position: absolute; top: -0.8rem; left: 2rem;"><x-import component-from-global-scope="FrScopaDesignSystem_406815.Badge" variant="burgundy" hint-size="90px,26px">Most loved</x-import></div>
+          <h3 style="font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; color: var(--burgundy);">The Atelier + a year of beans</h3>
+          <p style="color: var(--ink-soft); margin-top: 0.6rem; line-height: 1.6; flex: 1;">The machine, plus house beans delivered as you need them for a year. It reorders; you never run dry.</p>
+          <div style="display: flex; align-items: baseline; gap: 0.6rem; margin-top: 1.2rem;"><span style="font-family: var(--font-display); font-weight: 800; font-size: 1.8rem; color: var(--ink);">$2,799</span><span style="color: var(--ink-soft); font-size: 0.9rem; text-decoration: line-through;">$2,899</span></div>
+          <div style="margin-top: 1.2rem;"><x-import component-from-global-scope="FrScopaDesignSystem_406815.Button" variant="terracotta" arrow="{{ true }}" onClick="{{ addAction }}" style="width: 100%; justify-content: center;" hint-size="100%,44px">Add to cart</x-import></div>
+        </div>
+        <div style="background: var(--surface-card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 2rem; box-shadow: var(--shadow-md); display: flex; flex-direction: column;">
+          <h3 style="font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; color: var(--burgundy);">The Atelier + Barista Kit</h3>
+          <p style="color: var(--ink-soft); margin-top: 0.6rem; line-height: 1.6; flex: 1;">Adds the milk jug, tamper, and two ceramic cups — for the mornings you want to do it by hand.</p>
+          <div style="display: flex; align-items: baseline; gap: 0.6rem; margin-top: 1.2rem;"><span style="font-family: var(--font-display); font-weight: 800; font-size: 1.8rem; color: var(--ink);">$2,399</span><span style="color: var(--ink-soft); font-size: 0.9rem;">save $110</span></div>
+          <div style="margin-top: 1.2rem;"><x-import component-from-global-scope="FrScopaDesignSystem_406815.Button" variant="ghost" onClick="{{ addAction }}" style="color: var(--burgundy); width: 100%; justify-content: center;" hint-size="100%,44px">Add to cart</x-import></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Pairs well with ===== -->
+  <section style="background: var(--paper); padding: var(--section-y) 0;">
+    <div style="max-width: var(--content); margin-inline: auto; padding-inline: var(--gutter);">
+      <x-import component-from-global-scope="FrScopaDesignSystem_406815.Eyebrow" hint-size="160px,20px">Pairs well with</x-import>
+      <h2 style="font-family: var(--font-display); font-weight: 800; letter-spacing: -0.02em; font-size: clamp(1.8rem, 1.3rem + 2vw, 2.8rem); color: var(--burgundy); margin-top: 1rem;">Stock the shelf beside it.</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(258px, 1fr)); gap: 1.8rem; margin-top: 3rem;">
+        <x-import component-from-global-scope="FrScopaDesignSystem_406815.ProductCard" image="assets/images/espresso-pour.jpg" image-alt="Espresso pouring into a warm glass." category="Coffee" title="The house pour" note="Our everyday blend, coaxed a little rounder for the season." price="$18" on-action="{{ addToCart }}" hint-size="100%,420px"></x-import>
+        <x-import component-from-global-scope="FrScopaDesignSystem_406815.ProductCard" image="assets/images/tea-moment.jpg" image-alt="Amber tea beside loose leaves." category="Tea" title="Honeybush and orange peel" note="Caffeine-free, and quietly sweet. Made for slowing down." price="$14" on-action="{{ addToCart }}" hint-size="100%,420px"></x-import>
+        <x-import component-from-global-scope="FrScopaDesignSystem_406815.ProductCard" image="assets/images/citrus-juice.jpg" image-alt="Cold-pressed citrus juice." category="Juice" title="Cold-pressed citrus" note="Three oranges, one grapefruit, and a whisper of ginger." price="$10" on-action="{{ addToCart }}" hint-size="100%,420px"></x-import>
+      </div>
+    </div>
+  </section>
+
+  <x-import component-from-global-scope="FrScopaDesignSystem_406815.SiteFooter" logo-light="assets/frescopa-logo-light.svg" hint-size="100%,520px"></x-import>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { cart: 0, activeImg: 0, finish: 0, qty: 1, added: false, openFaq: 0, activeStep: 0, openClaim: 0 };
+  componentDidMount() {
+    let c = 0;
+    try { c = parseInt(localStorage.getItem('frescopa_cart') || '0', 10) || 0; } catch (e) {}
+    this.setState({ cart: c });
+    this._sync = (e) => { if (e.key === 'frescopa_cart') this.setState({ cart: parseInt(e.newValue || '0', 10) || 0 }); };
+    window.addEventListener('storage', this._sync);
+  }
+  componentWillUnmount() { if (this._sync) window.removeEventListener('storage', this._sync); clearTimeout(this._t); }
+  addToCart = (n) => {
+    const inc = (typeof n === 'number' && n > 0) ? n : 1;
+    this.setState((s) => {
+      const cart = s.cart + inc;
+      try { localStorage.setItem('frescopa_cart', String(cart)); } catch (e) {}
+      return { cart };
+    });
+  };
+  toggleFaq = (i) => this.setState((s) => ({ openFaq: s.openFaq === i ? -1 : i }));
+  toggleClaim = (i) => this.setState((s) => ({ openClaim: s.openClaim === i ? -1 : i }));
+  addAction = () => {
+    this.addToCart(this.state.qty);
+    this.setState({ added: true });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ added: false }), 2000);
+  };
+  renderVals() {
+    const nav = [
+      { label: 'The Atelier', href: 'Landing.dc.html' },
+      { label: 'Machines', href: 'Machines.dc.html' },
+      { label: 'Coffee & tea', href: 'Home.dc.html#feed' },
+      { label: 'Café', href: 'Home.dc.html#cafe' },
+    ];
+    const active = this.state.activeImg;
+    const thumbBase = { padding: 0, border: 'none', borderRadius: 'var(--r-md)', overflow: 'hidden', aspectRatio: '1 / 1', cursor: 'pointer', background: 'var(--paper-3)', transition: 'box-shadow 0.2s var(--ease-quint)' };
+    const ts = (i) => i === active
+      ? { ...thumbBase, boxShadow: '0 0 0 2px var(--paper), 0 0 0 4px var(--terracotta)' }
+      : { ...thumbBase, boxShadow: 'inset 0 0 0 1px var(--line)' };
+
+    const finishes = [
+      { name: 'Cream', color: 'oklch(0.945 0.016 80)' },
+      { name: 'Charcoal', color: 'oklch(0.222 0.016 52)' },
+      { name: 'Terracotta', color: 'oklch(0.605 0.116 44)' },
+    ];
+    const fi = this.state.finish;
+    const swatchBase = { width: '40px', height: '40px', borderRadius: '50%', border: 'none', cursor: 'pointer', boxShadow: 'inset 0 0 0 1px oklch(0 0 0 / 0.14)' };
+    const finishPills = finishes.map((f, i) => ({
+      name: f.name,
+      onClick: () => this.setState({ finish: i }),
+      style: i === fi
+        ? { ...swatchBase, background: f.color, boxShadow: '0 0 0 2px var(--paper), 0 0 0 4px var(--terracotta)' }
+        : { ...swatchBase, background: f.color },
+    }));
+
+    const faqRaw = [
+      { q: 'Is it a hassle to set up?', a: "Not at all. Delivery includes a full setup, so it's pouring before we leave. If anything ever feels off, we'll talk you through it." },
+      { q: 'Do I have to buy Fréscopa pods?', a: "Never. The Atelier is happiest with whole beans, and it works beautifully with your own. Our pods are there if you want them, not because you have to." },
+      { q: 'How long until it learns my taste?', a: "Give it a week of mornings. It starts adjusting from the very first cup, and settles into your preferences before the first bag runs out." },
+      { q: 'Will it wake the whole house?', a: "The grind is whisper-quiet by design. Early risers can pour a cup without stirring anyone still asleep." },
+      { q: "What if it isn't for me?", a: "You have thirty mornings to fall for it. If it doesn't earn its place on your counter, send it back and we'll cover the return." },
+      { q: 'Is it a chore to clean?', a: "It rinses itself after every cup, and the parts that need washing are dishwasher-safe. A proper clean takes a minute, not a morning." },
+    ];
+    const faqs = faqRaw.map((f, i) => ({
+      q: f.q,
+      a: f.a,
+      open: this.state.openFaq === i,
+      onClick: () => this.toggleFaq(i),
+      iconStyle: { transform: this.state.openFaq === i ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s var(--ease-quint)', flex: '0 0 auto' },
+    }));
+    const howData = [
+      { title: 'It tastes every cup', short: 'Grind, flow, strength, temperature.', body: 'A ring of sensors watches every extraction — the grind size, how fast the water flows, the strength in the cup, and the temperature at the group head. The same signals a barista feels by hand, read hundreds of times a second.' },
+      { title: 'It builds your flavour DNA', short: 'A profile per person, refined daily.', body: 'Those readings roll up into a flavour DNA for each person in the house — how strong, how hot, how much milk, which drink, and when. Every cup you pour nudges the picture a little closer to right.' },
+      { title: 'It reads the morning', short: "Time, calendar, weather, who's up.", body: "Before you've asked, it weighs the time of day, what's on your calendar, the weather outside, and who's already awake. A rushed Tuesday and a slow Sunday call for different cups, and it knows the difference." },
+      { title: 'It acts on its own', short: 'Warms up, pours, reorders.', body: 'Then it acts. It warms up before your alarm, sets the pour to match the morning, and quietly reorders beans before you run low. Less like using a machine, and more like being looked after.' },
+    ];
+    const aStep = this.state.activeStep;
+    const howNumBase = { width: '40px', height: '40px', borderRadius: '50%', display: 'grid', placeItems: 'center', fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '1.1rem' };
+    const howCardBase = { textAlign: 'left', cursor: 'pointer', padding: '1.4rem', borderRadius: 'var(--r-lg)', background: 'var(--surface-card)', transition: 'all 0.25s var(--ease-quint)', width: '100%' };
+    const howTabs = howData.map((h, i) => ({
+      n: String(i + 1),
+      title: h.title,
+      short: h.short,
+      active: i === aStep,
+      onClick: () => this.setState({ activeStep: i }),
+      style: i === aStep
+        ? { ...howCardBase, border: '2px solid var(--terracotta)', boxShadow: 'var(--shadow-lg)' }
+        : { ...howCardBase, border: '1px solid var(--line)', boxShadow: 'var(--shadow-sm)' },
+      numStyle: i === aStep
+        ? { ...howNumBase, background: 'var(--terracotta)', color: 'var(--cream)' }
+        : { ...howNumBase, background: 'color-mix(in oklch, var(--terracotta) 14%, transparent)', color: 'var(--terracotta)' },
+    }));
+    const claimData = [
+      { claim: 'Learns your taste', answer: 'From your first cup it tracks strength, temperature and milk, and settles into your preference within about a week.' },
+      { claim: 'Reads your calendar', answer: 'A full morning and a slow one call for different cups. With your permission it checks your calendar and adjusts what it suggests.' },
+      { claim: 'Reorders itself', answer: 'It watches the bean hopper and reorders your blend before you run out — and pauses the moment you ask it to.' },
+      { claim: 'Compostable pods', answer: 'The optional pods break down in your compost, and spent grounds drop into a drawer you can empty straight onto the garden.' },
+      { claim: 'Whisper-quiet grind', answer: 'The grinder runs at about 58 dB, quiet enough to pour a cup without waking anyone still asleep.' },
+      { claim: 'Steams milk on its own', answer: 'An automatic wand textures milk to the right temperature for each drink — no jug to swirl by hand.' },
+    ];
+    const oc = this.state.openClaim;
+    const claims = claimData.map((c, i) => ({
+      claim: c.claim,
+      answer: c.answer,
+      open: oc === i,
+      onClick: () => this.toggleClaim(i),
+      iconStyle: { transform: oc === i ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s var(--ease-quint)', flex: '0 0 auto' },
+    }));
+    return {
+      nav,
+      faqs,
+      claims,
+      howTabs,
+      activeN: String(aStep + 1),
+      detailTitle: howData[aStep].title,
+      detailBody: howData[aStep].body,
+      howShow0: aStep === 0,
+      howShow1: aStep === 1,
+      howShow2: aStep === 2,
+      howShow3: aStep === 3,
+      cart: this.state.cart,
+      goAccount: () => { window.location.href = 'MyAtelier.dc.html'; },
+      addToCart: this.addToCart,
+      addAction: this.addAction,
+      show0: active === 0,
+      show1: active === 1,
+      show2: active === 2,
+      show3: active === 3,
+      sel0: () => this.setState({ activeImg: 0 }),
+      sel1: () => this.setState({ activeImg: 1 }),
+      sel2: () => this.setState({ activeImg: 2 }),
+      sel3: () => this.setState({ activeImg: 3 }),
+      thumb0Style: ts(0),
+      thumb1Style: ts(1),
+      thumb2Style: ts(2),
+      thumb3Style: ts(3),
+      finishPills,
+      selectedFinish: finishes[fi].name,
+      qty: this.state.qty,
+      dec: () => this.setState((s) => ({ qty: Math.max(1, s.qty - 1) })),
+      inc: () => this.setState((s) => ({ qty: Math.min(9, s.qty + 1) })),
+      addLabel: this.state.added ? 'Added to cart ✓' : 'Add to cart',
+      addBtnStyle: { width: '100%', justifyContent: 'center' },
+    };
+  }
+}
+</script>
+</body>
+</html>
