@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Atelier — Bean-to-cup coffee machine · Fréscopa</title>
+  <meta name="description" content="The first Fréscopa machine with a feel for your mornings. It learns your taste, reads the shape of your day, and quietly takes care of the rest." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%235b1c22'/%3E%3Cpath d='M11 9c4 0 8 3 8 8s-4 6-8 6' fill='none' stroke='%23eaa33a' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./shared/tokens.css" />
+  <link rel="stylesheet" href="./craft.css" />
+  <link rel="stylesheet" href="./pdp.css" />
+  <script defer src="./shared/flavor-dna.js"></script>
+  <script defer src="./shared/app.js"></script>
+  <script defer src="./pdp.js"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "The Atelier",
+    "sku": "FR-ATL-001",
+    "brand": { "@type": "Brand", "name": "Fréscopa" },
+    "category": "Bean-to-cup coffee machine",
+    "description": "The first Fréscopa machine with a feel for your mornings. It learns your taste, reads the shape of your day, and quietly takes care of the rest.",
+    "material": "Anodised aluminium, oak trim",
+    "color": ["Cream", "Charcoal", "Terracotta"],
+    "weight": { "@type": "QuantitativeValue", "value": "9.8", "unitCode": "KGM" },
+    "offers": {
+      "@type": "Offer",
+      "price": "2199",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "url": "atelier.html"
+    },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "214" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Is it a hassle to set up?", "acceptedAnswer": { "@type": "Answer", "text": "No. Delivery includes a full setup, so the Atelier is pouring before we leave. Support is available in-app, by phone, or at any Fréscopa café if anything feels off." } },
+      { "@type": "Question", "name": "Do I have to buy Fréscopa pods?", "acceptedAnswer": { "@type": "Answer", "text": "No. The Atelier runs on whole beans and works with your own. Compostable Fréscopa pods are optional, not required." } },
+      { "@type": "Question", "name": "How long until it learns my taste?", "acceptedAnswer": { "@type": "Answer", "text": "It adjusts from the first cup and settles into your preferences within about a week, typically before the first 250 g bag runs out." } },
+      { "@type": "Question", "name": "Will it wake the whole house?", "acceptedAnswer": { "@type": "Answer", "text": "The grinder runs at about 58 dB, quiet enough to pour a cup without disturbing anyone still asleep." } },
+      { "@type": "Question", "name": "What if it isn't for me?", "acceptedAnswer": { "@type": "Answer", "text": "There is a 30-night trial. If it does not earn its place, returns are free and fully covered." } },
+      { "@type": "Question", "name": "Is it a chore to clean?", "acceptedAnswer": { "@type": "Answer", "text": "It rinses itself after every cup and the removable parts are dishwasher-safe. A full clean takes about a minute." } }
+    ]
+  }
+  </script>
+</head>
+<body class="craft pdp-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header" data-header>
+    <div class="container container--wide header__inner">
+      <a class="header__brand" href="index.html" aria-label="Fréscopa home">
+        <img class="header__logo" src="./assets/frescopa-logo-light.svg" alt="Fréscopa" width="150" height="40" />
+      </a>
+
+      <nav class="nav" data-nav aria-label="Primary">
+        <a href="atelier.html">The Atelier</a>
+        <a href="index.html#mood">Machines</a>
+        <a href="index.html#feed">Coffee &amp; tea</a>
+        <a href="index.html#cafe">Café</a>
+      </nav>
+
+      <div class="header__utils">
+        <button class="iconbtn" aria-label="Search">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2" stroke-linecap="round"/></svg>
+        </button>
+        <button class="iconbtn" aria-label="Account">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6" stroke-linecap="round"/></svg>
+        </button>
+        <button class="iconbtn iconbtn--cart" aria-label="Cart, 0 items" data-cart-button>
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 8h12l-1 11H7L6 8Z"/><path d="M9 8a3 3 0 0 1 6 0" stroke-linecap="round"/></svg>
+          <span class="cart-badge" data-cart-count hidden>0</span>
+        </button>
+        <button class="nav-toggle" data-nav-toggle aria-label="Menu" aria-expanded="false" aria-controls="primary-nav">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ PRODUCT — gallery + buy box ============ -->
+    <section class="pdp-product">
+      <div class="container container--wide">
+        <nav class="pdp-breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span aria-hidden="true">/</span>
+          <a href="index.html#mood">Machines</a>
+          <span aria-hidden="true">/</span>
+          <span aria-current="page">The Atelier</span>
+        </nav>
+
+        <div class="pdp-layout">
+          <!-- Gallery -->
+          <div class="pdp-gallery" data-gallery>
+            <div class="pdp-gallery__main">
+              <img src="./assets/images/hero-machine.jpg" alt="The Atelier on a sunlit counter." data-gallery-image="0" />
+              <img src="./assets/images/espresso-pour.jpg" alt="Espresso pouring from the Atelier." data-gallery-image="1" hidden />
+              <img src="./assets/images/sustainability.jpg" alt="Grounds returned to soil." data-gallery-image="2" hidden />
+              <img src="./assets/images/cafe-interior.jpg" alt="The Atelier at home in a warm kitchen." data-gallery-image="3" hidden />
+            </div>
+            <div class="pdp-gallery__thumbs">
+              <button type="button" class="pdp-thumb is-active" data-gallery-thumb="0" aria-label="The Atelier on a sunlit counter."><img src="./assets/images/hero-machine.jpg" alt="" /></button>
+              <button type="button" class="pdp-thumb" data-gallery-thumb="1" aria-label="Espresso pouring from the Atelier."><img src="./assets/images/espresso-pour.jpg" alt="" /></button>
+              <button type="button" class="pdp-thumb" data-gallery-thumb="2" aria-label="Grounds returned to soil."><img src="./assets/images/sustainability.jpg" alt="" /></button>
+              <button type="button" class="pdp-thumb" data-gallery-thumb="3" aria-label="The Atelier at home in a warm kitchen."><img src="./assets/images/cafe-interior.jpg" alt="" /></button>
+            </div>
+          </div>
+
+          <!-- Buy box -->
+          <div class="pdp-buy">
+            <span class="eyebrow eyebrow--plain">Bean-to-cup machine</span>
+            <h1>The Atelier</h1>
+            <a class="pdp-rating" href="#reviews">
+              <span class="pdp-stars" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg>
+              </span>
+              <span>4.8 · 214 reviews</span>
+            </a>
+            <p class="pdp-buy__lead">The first Fréscopa machine with a feel for your mornings. It learns what you love, reads the shape of your day, and quietly takes care of the rest.</p>
+
+            <div class="pdp-price">
+              <span class="pdp-price__amount">$2,199</span>
+              <span class="pdp-price__terms">or $184/mo for 12 months</span>
+            </div>
+
+            <!-- Finish -->
+            <div class="pdp-field" data-finish>
+              <p class="pdp-field__label">Finish — <span data-finish-name>Cream</span></p>
+              <div class="pdp-swatches">
+                <button type="button" class="pdp-swatch is-active" data-finish-swatch="Cream" title="Cream" aria-label="Cream" style="background: oklch(0.945 0.016 80);"></button>
+                <button type="button" class="pdp-swatch" data-finish-swatch="Charcoal" title="Charcoal" aria-label="Charcoal" style="background: oklch(0.222 0.016 52);"></button>
+                <button type="button" class="pdp-swatch" data-finish-swatch="Terracotta" title="Terracotta" aria-label="Terracotta" style="background: oklch(0.605 0.116 44);"></button>
+              </div>
+            </div>
+
+            <!-- Quantity + add -->
+            <div class="pdp-cartrow" data-add>
+              <div class="pdp-qty">
+                <button type="button" class="pdp-qty__btn" data-qty-dec aria-label="Decrease quantity">−</button>
+                <span class="pdp-qty__val" data-qty-val>1</span>
+                <button type="button" class="pdp-qty__btn" data-qty-inc aria-label="Increase quantity">+</button>
+              </div>
+              <button type="button" class="btn btn--terracotta" data-add-btn>Add to cart</button>
+            </div>
+
+            <!-- Trust -->
+            <div class="pdp-trust">
+              <div class="pdp-trust__item"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--terracotta)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h13v10H3z"/><path d="M16 10h3l2 2.5V17h-5z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg><span>Free delivery, and we'll set it up for you.</span></div>
+              <div class="pdp-trust__item"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--terracotta)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.4-3 8-7 10-4-2-7-5.6-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg><span>Two-year workshop guarantee.</span></div>
+              <div class="pdp-trust__item"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--terracotta)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3"/><path d="M21 4v5h-5"/></svg><span>Thirty mornings to fall for it, or send it back.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ JUMP GUIDE ============ -->
+    <section class="pdp-jump" aria-label="Jump to a section">
+      <div class="container container--wide pdp-jump__inner">
+        <span class="pdp-jump__lead">Still deciding?</span>
+        <span class="pdp-jump__label">Jump to</span>
+        <nav class="pdp-jump__links">
+          <a href="#how">How it works</a>
+          <a href="#specs">Specifications</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#faq">Questions</a>
+          <a href="#bundles">Bundles &amp; price</a>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section class="pdp-section pdp-section--paper2 pdp-how" id="how">
+      <div class="container container--wide">
+        <div class="pdp-how__intro reveal">
+          <p class="eyebrow">How it actually works</p>
+          <h2 class="pdp-h2">It learns your taste. Here's how.</h2>
+          <p class="pdp-lead">Not a preset menu, and not a guess. The Atelier works the way a good barista does — it pays attention, remembers, and adjusts. Four quiet steps, running every morning.</p>
+        </div>
+
+        <div class="pdp-steps reveal" data-steps>
+          <button type="button" class="pdp-step is-active" data-step="0" aria-pressed="true">
+            <div class="pdp-step__num">1</div>
+            <h3>It tastes every cup</h3>
+            <p>Grind, flow, strength, temperature.</p>
+          </button>
+          <button type="button" class="pdp-step" data-step="1" aria-pressed="false">
+            <div class="pdp-step__num">2</div>
+            <h3>It builds your flavour DNA</h3>
+            <p>A profile per person, refined daily.</p>
+          </button>
+          <button type="button" class="pdp-step" data-step="2" aria-pressed="false">
+            <div class="pdp-step__num">3</div>
+            <h3>It reads the morning</h3>
+            <p>Time, calendar, weather, who's up.</p>
+          </button>
+          <button type="button" class="pdp-step" data-step="3" aria-pressed="false">
+            <div class="pdp-step__num">4</div>
+            <h3>It acts on its own</h3>
+            <p>Warms up, pours, reorders.</p>
+          </button>
+        </div>
+
+        <div class="pdp-detail reveal">
+          <div>
+            <span class="pdp-detail__step">Step <span data-detail-n>1</span> of 4</span>
+            <h3 data-detail-title>It tastes every cup</h3>
+            <p data-detail-body>A ring of sensors watches every extraction — the grind size, how fast the water flows, the strength in the cup, and the temperature at the group head. The same signals a barista feels by hand, read hundreds of times a second.</p>
+          </div>
+          <div class="pdp-detail__media">
+            <img src="./assets/images/espresso-pour.jpg" alt="Sensors reading every pour." data-detail-image />
+          </div>
+        </div>
+
+        <p class="pdp-how__note">Your flavour DNA and morning routines stay on your machine and your account. You can review what it has learned, correct it, or wipe it clean, any time.</p>
+      </div>
+    </section>
+
+    <!-- ============ VIDEO ============ -->
+    <section class="pdp-video">
+      <div class="pdp-video__inner reveal">
+        <p class="eyebrow">See it in the morning</p>
+        <h2>Two minutes in a real kitchen.</h2>
+        <div class="pdp-video__frame">
+          <img src="./assets/images/hero-machine.jpg" alt="A morning with the Atelier." />
+          <button type="button" class="pdp-play" aria-label="Play the film">
+            <svg viewBox="0 0 24 24" width="32" height="32" fill="var(--terracotta)" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <span class="pdp-video__time">2:14</span>
+        </div>
+        <p class="pdp-video__caption">A short film is in production. Drop your own reel in here when it's ready.</p>
+      </div>
+    </section>
+
+    <!-- ============ CLAIMS ============ -->
+    <section class="pdp-section pdp-section--paper pdp-claims">
+      <div class="container container--wide">
+        <p class="eyebrow reveal">The claims, answered</p>
+        <h2 class="pdp-h2 reveal">Every promise, backed up.</h2>
+        <div class="pdp-accordion reveal">
+          <details class="pdp-acc" name="claims" open>
+            <summary><span class="pdp-acc__q"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--terracotta)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4 10-11"/></svg>Learns your taste</span><svg class="pdp-acc__chev" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--terracotta)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <p class="pdp-acc__a">From your first cup it tracks strength, temperature and milk, and settles into your preference within about a week.</p>
+          </details>
+          <details class="pdp-acc" name="claims">
+            <summary><span class="pdp-acc__q"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--terracotta)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4 10-11"/></svg>Reads your calendar</span><svg class="pdp-acc__chev" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--terracotta)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <p class="pdp-acc__a">A full morning and a slow one call for different cups. With your permission it checks your calendar and adjusts what it suggests.</p>
+          </details>
+          <details class="pdp-acc" name="claims">
+            <summary><span class="pdp-acc__q"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--terracotta)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4 10-11"/></svg>Reorders itself</span><svg class="pdp-acc__chev" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--terracotta)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <p class="pdp-acc__a">It watches the bean hopper and reorders your blend before you run out — and pauses the moment you ask it to.</p>
+          </details>
+          <details class="pdp-acc" name="claims">
+            <summary><span class="pdp-acc__q"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--terracotta)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4 10-11"/></svg>Compostable pods</span><svg class="pdp-acc__chev" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--terracotta)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <p class="pdp-acc__a">The optional pods break down in your compost, and spent grounds drop into a drawer you can empty straight onto the garden.</p>
+          </details>
+          <details class="pdp-acc" name="claims">
+            <summary><span class="pdp-acc__q"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--terracotta)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4 10-11"/></svg>Whisper-quiet grind</span><svg class="pdp-acc__chev" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--terracotta)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <p class="pdp-acc__a">The grinder runs at about 58 dB, quiet enough to pour a cup without waking anyone still asleep.</p>
+          </details>
+          <details class="pdp-acc" name="claims">
+            <summary><span class="pdp-acc__q"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--terracotta)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l4 4 10-11"/></svg>Steams milk on its own</span><svg class="pdp-acc__chev" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--terracotta)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <p class="pdp-acc__a">An automatic wand textures milk to the right temperature for each drink — no jug to swirl by hand.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FULL SPECIFICATIONS ============ -->
+    <section class="pdp-section pdp-section--paper2 pdp-specs" id="specs">
+      <div class="container container--wide">
+        <p class="eyebrow reveal">Every detail</p>
+        <h2 class="pdp-h2 reveal">The full specification.</h2>
+
+        <div class="pdp-specs__grid reveal">
+          <div class="pdp-specgroup">
+            <h3>Design and build</h3>
+            <dl>
+              <div class="pdp-specrow"><dt>Dimensions (W×D×H)</dt><dd>32 × 24 × 41 cm</dd></div>
+              <div class="pdp-specrow"><dt>Weight</dt><dd>9.8 kg</dd></div>
+              <div class="pdp-specrow"><dt>Materials</dt><dd>Anodised aluminium, oak trim</dd></div>
+              <div class="pdp-specrow"><dt>Finishes</dt><dd>Cream, Charcoal, Terracotta</dd></div>
+            </dl>
+          </div>
+          <div class="pdp-specgroup">
+            <h3>Brewing</h3>
+            <dl>
+              <div class="pdp-specrow"><dt>Water tank</dt><dd>1.8 L, removable</dd></div>
+              <div class="pdp-specrow"><dt>Bean hopper</dt><dd>250 g</dd></div>
+              <div class="pdp-specrow"><dt>Pump pressure</dt><dd>15 bar</dd></div>
+              <div class="pdp-specrow"><dt>Drinks</dt><dd>Espresso, filter, long black, cappuccino, latte, tea</dd></div>
+            </dl>
+          </div>
+          <div class="pdp-specgroup">
+            <h3>Intelligence and connectivity</h3>
+            <dl>
+              <div class="pdp-specrow"><dt>Learning</dt><dd>Adapts over ~7 days</dd></div>
+              <div class="pdp-specrow"><dt>Taste profiles</dt><dd>Up to 6 household members</dd></div>
+              <div class="pdp-specrow"><dt>Connectivity</dt><dd>Wi-Fi 2.4/5 GHz, Bluetooth 5.0</dd></div>
+              <div class="pdp-specrow"><dt>App</dt><dd>iOS 15+ / Android 10+</dd></div>
+            </dl>
+          </div>
+          <div class="pdp-specgroup">
+            <h3>Power and sound</h3>
+            <dl>
+              <div class="pdp-specrow"><dt>Power</dt><dd>1500 W</dd></div>
+              <div class="pdp-specrow"><dt>Voltage</dt><dd>220–240 V</dd></div>
+              <div class="pdp-specrow"><dt>Grinding noise</dt><dd>58 dB</dd></div>
+              <div class="pdp-specrow"><dt>Auto-off</dt><dd>After 20 min idle</dd></div>
+            </dl>
+          </div>
+          <div class="pdp-specgroup">
+            <h3>Sustainability</h3>
+            <dl>
+              <div class="pdp-specrow"><dt>Pods</dt><dd>Compostable</dd></div>
+              <div class="pdp-specrow"><dt>Grounds</dt><dd>Eject to compost drawer</dd></div>
+              <div class="pdp-specrow"><dt>Energy</dt><dd>A+ rated</dd></div>
+              <div class="pdp-specrow"><dt>Packaging</dt><dd>Plastic-free</dd></div>
+            </dl>
+          </div>
+          <div class="pdp-specgroup">
+            <h3>Delivery and returns</h3>
+            <dl>
+              <div class="pdp-specrow"><dt>Delivery</dt><dd>Free, 3–5 days</dd></div>
+              <div class="pdp-specrow"><dt>Setup</dt><dd>Included at delivery</dd></div>
+              <div class="pdp-specrow"><dt>Trial</dt><dd>30 nights, free returns</dd></div>
+              <div class="pdp-specrow"><dt>Warranty</dt><dd>2 years parts and labour</dd></div>
+            </dl>
+          </div>
+        </div>
+
+        <div class="pdp-box reveal">
+          <h3>In the box</h3>
+          <div class="pdp-box__grid">
+            <div class="pdp-box__item">The Atelier machine</div>
+            <div class="pdp-box__item">Starter bag of house beans, 250 g</div>
+            <div class="pdp-box__item">Reusable pod and scoop</div>
+            <div class="pdp-box__item">Water filter cartridge</div>
+            <div class="pdp-box__item">Quick-start card</div>
+            <div class="pdp-box__item">Power cable</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FLAVOUR DNA (charcoal, reuses .learn / .dna) ============ -->
+    <section class="learn" id="dna">
+      <span class="bignum" aria-hidden="true">DNA</span>
+      <div class="container container--wide">
+        <header class="learn__head reveal">
+          <p class="kicker kicker--dark"><span class="kicker__n">DNA</span> How it learns you</p>
+          <h2 class="learn__title">Your taste, drawn one cup <em>at a time.</em></h2>
+          <p class="lede lede--dark">We call the picture the Atelier builds your flavour DNA. Tap a profile to see how a Tuesday, a slow Sunday, and a late evening each pour a little differently.</p>
+        </header>
+
+        <div class="dna reveal" data-flavor-dna data-default="weekday" data-autocycle style="--reveal-delay:.08s">
+          <div class="dna__stage">
+            <svg data-dna-svg></svg>
+          </div>
+          <div class="dna__side">
+            <div class="dna__readout">
+              <h4 data-flavor-title>The weekday cup</h4>
+              <p data-flavor-note></p>
+            </div>
+            <div class="dna__controls" role="group" aria-label="Choose a taste profile">
+              <button data-profile="weekday" class="dna__btn">Weekday</button>
+              <button data-profile="sunday" class="dna__btn">Slow Sunday</button>
+              <button data-profile="evening" class="dna__btn">After dinner</button>
+            </div>
+            <ul class="learn__points">
+              <li>
+                <span class="learn__pt-label">Remembered</span>
+                <span class="learn__pt-text">It keeps what you love, and quietly lets go of what you don't.</span>
+              </li>
+              <li>
+                <span class="learn__pt-label">Adaptive</span>
+                <span class="learn__pt-text">Bolder before a long day, gentler when there is time to linger.</span>
+              </li>
+              <li>
+                <span class="learn__pt-label">Yours everywhere</span>
+                <span class="learn__pt-text">Your profile travels with you, so any Atelier pours it just right.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ REVIEWS ============ -->
+    <section class="pdp-section pdp-section--paper2 pdp-reviews" id="reviews">
+      <div class="container container--wide">
+        <div class="pdp-reviews__head reveal">
+          <div class="pdp-reviews__head-l">
+            <p class="eyebrow">What owners say</p>
+            <h2 class="pdp-h2">The verdict, three months in.</h2>
+          </div>
+          <div class="pdp-score">
+            <div class="pdp-score__num">4.8</div>
+            <span class="pdp-score__stars" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="var(--amber)"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="var(--amber)"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="var(--amber)"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="var(--amber)"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="var(--amber)"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg>
+            </span>
+            <p class="pdp-score__count">from 214 verified owners</p>
+          </div>
+        </div>
+        <div class="pdp-reviewgrid">
+          <figure class="pdp-review reveal">
+            <span class="pdp-stars" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg>
+            </span>
+            <blockquote>It simply knew what I wanted, before I did. The first machine I've owned that got better the longer I had it.</blockquote>
+            <figcaption>Priya M. · London · 3 months in</figcaption>
+          </figure>
+          <figure class="pdp-review reveal" style="--reveal-delay:.08s">
+            <span class="pdp-stars" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg>
+            </span>
+            <blockquote>I was sceptical at the price. Then it started reordering beans before I noticed, and warming up before my alarm. Now the counter feels bare without it.</blockquote>
+            <figcaption>Daniel R. · Bristol · 5 months in</figcaption>
+          </figure>
+          <figure class="pdp-review reveal" style="--reveal-delay:.16s">
+            <span class="pdp-stars" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="var(--amber)"><path d="M12 3l2.7 5.5 6 .9-4.3 4.2 1 6-5.4-2.8-5.4 2.8 1-6L3.3 9.4l6-.9z"/></svg>
+            </span>
+            <blockquote>Every person in our house gets their own cup, exactly right, without touching a single dial. Worth every penny.</blockquote>
+            <figcaption>Sana K. · Leeds · 2 months in</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="pdp-section pdp-section--paper pdp-faq" id="faq">
+      <div class="container container--wide pdp-faq__grid">
+        <div class="pdp-faq__intro reveal">
+          <p class="eyebrow">Before you decide</p>
+          <h2 class="pdp-h2">Every last hesitation, handled.</h2>
+          <p>The small doubts that keep a good machine in its box. Here's the honest answer to each.</p>
+          <a class="link" href="index.html#cafe">Ask us anything else <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+        <div class="pdp-accordion reveal">
+          <details class="pdp-acc" name="faq" open>
+            <summary><span class="pdp-acc__q">Is it a hassle to set up?</span><svg class="pdp-acc__chev" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--terracotta)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <p class="pdp-acc__a">Not at all. Delivery includes a full setup, so it's pouring before we leave. If anything ever feels off, we'll talk you through it.</p>
+          </details>
+          <details class="pdp-acc" name="faq">
+            <summary><span class="pdp-acc__q">Do I have to buy Fréscopa pods?</span><svg class="pdp-acc__chev" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--terracotta)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <p class="pdp-acc__a">Never. The Atelier is happiest with whole beans, and it works beautifully with your own. Our pods are there if you want them, not because you have to.</p>
+          </details>
+          <details class="pdp-acc" name="faq">
+            <summary><span class="pdp-acc__q">How long until it learns my taste?</span><svg class="pdp-acc__chev" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--terracotta)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <p class="pdp-acc__a">Give it a week of mornings. It starts adjusting from the very first cup, and settles into your preferences before the first bag runs out.</p>
+          </details>
+          <details class="pdp-acc" name="faq">
+            <summary><span class="pdp-acc__q">Will it wake the whole house?</span><svg class="pdp-acc__chev" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--terracotta)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <p class="pdp-acc__a">The grind is whisper-quiet by design. Early risers can pour a cup without stirring anyone still asleep.</p>
+          </details>
+          <details class="pdp-acc" name="faq">
+            <summary><span class="pdp-acc__q">What if it isn't for me?</span><svg class="pdp-acc__chev" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--terracotta)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <p class="pdp-acc__a">You have thirty mornings to fall for it. If it doesn't earn its place on your counter, send it back and we'll cover the return.</p>
+          </details>
+          <details class="pdp-acc" name="faq">
+            <summary><span class="pdp-acc__q">Is it a chore to clean?</span><svg class="pdp-acc__chev" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="var(--terracotta)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary>
+            <p class="pdp-acc__a">It rinses itself after every cup, and the parts that need washing are dishwasher-safe. A proper clean takes a minute, not a morning.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BUNDLES ============ -->
+    <section class="pdp-section pdp-section--paper2 pdp-bundles" id="bundles">
+      <div class="container container--wide">
+        <div class="pdp-bundles__intro reveal">
+          <p class="eyebrow">Ways to buy</p>
+          <h2 class="pdp-h2">Start with the machine, or the whole ritual.</h2>
+        </div>
+        <div class="pdp-bundlegrid">
+          <div class="pdp-bundle reveal">
+            <h3>The Atelier</h3>
+            <p>The machine, delivered and set up in your kitchen. Everything it needs to start learning you.</p>
+            <div class="pdp-bundle__price">$2,199</div>
+            <button type="button" class="btn btn--terracotta" data-add-btn>Add to cart</button>
+          </div>
+          <div class="pdp-bundle pdp-bundle--featured reveal" style="--reveal-delay:.08s">
+            <span class="pdp-badge">Most loved</span>
+            <h3>The Atelier + a year of beans</h3>
+            <p>The machine, plus house beans delivered as you need them for a year. It reorders; you never run dry.</p>
+            <div class="pdp-bundle__pricerow">
+              <span class="pdp-bundle__price">$2,799</span>
+              <span class="pdp-bundle__was">$2,899</span>
+            </div>
+            <button type="button" class="btn btn--terracotta" data-add-btn>Add to cart <span class="arrow" aria-hidden="true">→</span></button>
+          </div>
+          <div class="pdp-bundle reveal" style="--reveal-delay:.16s">
+            <h3>The Atelier + Barista Kit</h3>
+            <p>Adds the milk jug, tamper, and two ceramic cups — for the mornings you want to do it by hand.</p>
+            <div class="pdp-bundle__pricerow">
+              <span class="pdp-bundle__price">$2,399</span>
+              <span class="pdp-bundle__save">save $110</span>
+            </div>
+            <button type="button" class="btn btn--ghost" data-add-btn>Add to cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PAIRS WELL WITH (reuses .card) ============ -->
+    <section class="pdp-section pdp-section--paper pdp-pairs">
+      <div class="container container--wide">
+        <p class="eyebrow reveal">Pairs well with</p>
+        <h2 class="pdp-h2 reveal">Stock the shelf beside it.</h2>
+        <div class="pdp-pairs__grid">
+          <article class="card reveal">
+            <div class="card__media">
+              <img src="./assets/images/espresso-pour.jpg" alt="Espresso pouring into a warm glass." width="1408" height="768" loading="lazy" />
+              <span class="card__cat">Coffee</span>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">The house pour</h3>
+              <p class="card__note">Our everyday blend, coaxed a little rounder for the season.</p>
+              <div class="card__foot">
+                <span class="card__price">$18</span>
+                <button class="link link--sm" data-add-btn>Add to cart <span class="arrow" aria-hidden="true">→</span></button>
+              </div>
+            </div>
+          </article>
+          <article class="card reveal" style="--reveal-delay:.08s">
+            <div class="card__media">
+              <img src="./assets/images/tea-moment.jpg" alt="Amber tea beside loose leaves." width="1408" height="768" loading="lazy" />
+              <span class="card__cat">Tea</span>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">Honeybush &amp; orange peel</h3>
+              <p class="card__note">Caffeine-free, and quietly sweet. Made for slowing down.</p>
+              <div class="card__foot">
+                <span class="card__price">$14</span>
+                <button class="link link--sm" data-add-btn>Add to cart <span class="arrow" aria-hidden="true">→</span></button>
+              </div>
+            </div>
+          </article>
+          <article class="card reveal" style="--reveal-delay:.16s">
+            <div class="card__media">
+              <img src="./assets/images/citrus-juice.jpg" alt="Cold-pressed citrus juice." width="1408" height="768" loading="lazy" />
+              <span class="card__cat">Juice</span>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">Cold-pressed citrus</h3>
+              <p class="card__note">Three oranges, one grapefruit, and a whisper of ginger.</p>
+              <div class="card__foot">
+                <span class="card__price">$10</span>
+                <button class="link link--sm" data-add-btn>Add to cart <span class="arrow" aria-hidden="true">→</span></button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container container--wide footer__inner">
+      <div class="footer__brand">
+        <img class="footer__logo" src="./assets/frescopa-logo-light.svg" alt="Fréscopa" width="168" height="45" />
+        <p class="footer__tag">Warm mornings, made effortless. Coffee, tea, and cold-pressed juice, and the machines that make them sing.</p>
+        <form class="signup" action="#" onsubmit="return false">
+          <label class="signup__label" for="email">A little warmth in your inbox.</label>
+          <div class="signup__row">
+            <input id="email" class="signup__input" type="email" placeholder="you@example.com" autocomplete="email" />
+            <button class="btn btn--cream" type="submit">Sign up</button>
+          </div>
+        </form>
+      </div>
+
+      <nav class="footer__cols" aria-label="Footer">
+        <div class="footer__col">
+          <h3>Shop</h3>
+          <a href="index.html#feed">Coffee</a>
+          <a href="index.html#feed">Tea</a>
+          <a href="index.html#feed">Cold-pressed juice</a>
+          <a href="atelier.html">Machines</a>
+          <a href="index.html#feed">Accessories</a>
+        </div>
+        <div class="footer__col">
+          <h3>Company</h3>
+          <a href="#">Our story</a>
+          <a href="index.html">Sustainability</a>
+          <a href="index.html#cafe">Fréscopa Café</a>
+          <a href="#">Careers</a>
+        </div>
+        <div class="footer__col">
+          <h3>Support</h3>
+          <a href="#">Contact us</a>
+          <a href="#">Delivery &amp; returns</a>
+          <a href="#">Register your Atelier</a>
+          <a href="#">Help centre</a>
+        </div>
+      </nav>
+    </div>
+
+    <div class="container container--wide footer__legal">
+      <div class="footer__social">
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="Pinterest"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 8c-2 0-3 1.4-3 3 0 1 .5 2 1.3 2.4M12 8c1.8 0 3 1.1 3 2.8 0 2-1.2 3.4-2.8 3.4-.8 0-1.4-.5-1.2-1.3l.6-2.4M10.8 17l1-4" stroke-linecap="round"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="m10 9 5 3-5 3V9Z" fill="currentColor" stroke="none"/></svg></a>
+      </div>
+      <p class="footer__meta">© <span data-year>2026</span> Fréscopa · Privacy · Terms · A fictional brand, created for demonstration.</p>
+    </div>
+  </footer>
+</body>
+</html>

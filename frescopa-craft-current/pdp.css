@@ -1,0 +1,298 @@
+/* ============================================================
+   ATELIER — Product detail page
+   Additive layer for atelier.html only. Reuses the shared tokens
+   (shared/tokens.css) and the "Craft & Current" primitives
+   (craft.css). Nothing here touches index.html. Everything is
+   scoped under .pdp-page so the home page is untouched.
+   ============================================================ */
+
+/* One token the imported design used that the project doesn't define:
+   a near-white card surface, a touch lighter than --paper. */
+.pdp-page { --surface-card: oklch(0.985 0.008 82); }
+
+/* The first section is light, but the shared header is cream text on a
+   transparent ground (it only gains a background once scrolled). Give it
+   a solid burgundy masthead from the top on this page. app.js still
+   hides/shows it on scroll exactly as on the home page. */
+.pdp-page .header {
+  background: color-mix(in oklch, var(--burgundy) 92%, transparent);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 color-mix(in oklch, var(--amber) 24%, transparent), var(--shadow-md);
+}
+
+/* Cart count badge on the header cart icon */
+.pdp-page .iconbtn--cart { position: relative; }
+.pdp-page .cart-badge {
+  position: absolute; top: 3px; right: 2px;
+  min-width: 16px; height: 16px; padding: 0 4px;
+  display: grid; place-items: center; border-radius: var(--r-pill);
+  background: var(--amber); color: var(--charcoal);
+  font-family: var(--font-mono); font-size: 0.62rem; font-weight: 700; line-height: 1;
+}
+.pdp-page .cart-badge[hidden] { display: none; }
+
+/* Shared section helpers */
+.pdp-section { padding-block: var(--section-y); }
+.pdp-section--paper  { background: var(--paper); }
+.pdp-section--paper2 { background: var(--paper-2); }
+.pdp-h2 {
+  font-size: clamp(2rem, 1.4rem + 2.4vw, 3rem);
+  color: var(--burgundy); margin-top: 1rem;
+}
+.pdp-lead { color: var(--ink-soft); font-size: 1.125rem; margin-top: 1.1rem; line-height: 1.6; }
+
+/* ============================================================
+   Product — gallery + buy box
+   ============================================================ */
+.pdp-product {
+  background: var(--paper);
+  padding: calc(72px + clamp(1.5rem, 1rem + 2vw, 2.6rem)) 0 var(--section-y);
+}
+.pdp-breadcrumb {
+  display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;
+  font-family: var(--font-mono); text-transform: uppercase;
+  letter-spacing: 0.12em; font-size: 0.72rem; color: var(--ink-soft);
+}
+.pdp-breadcrumb a { color: var(--ink-soft); }
+.pdp-breadcrumb a:hover { color: var(--terracotta); }
+.pdp-breadcrumb [aria-current] { color: var(--ink); }
+
+.pdp-layout {
+  display: grid; grid-template-columns: 1.05fr 1fr;
+  gap: clamp(2rem, 1rem + 4vw, 4rem); margin-top: 2rem; align-items: start;
+}
+
+/* Gallery */
+.pdp-gallery { display: flex; flex-direction: column; gap: 1rem; }
+.pdp-gallery__main {
+  border-radius: var(--r-xl); overflow: hidden; aspect-ratio: 4 / 3.3;
+  background: var(--paper-3); box-shadow: var(--shadow-md);
+}
+.pdp-gallery__main img { width: 100%; height: 100%; object-fit: cover; object-position: center 44%; }
+.pdp-gallery__main img[hidden] { display: none; }
+.pdp-gallery__thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; }
+.pdp-thumb {
+  padding: 0; border: none; border-radius: var(--r-md); overflow: hidden;
+  aspect-ratio: 1 / 1; cursor: pointer; background: var(--paper-3);
+  box-shadow: inset 0 0 0 1px var(--line); transition: box-shadow 0.2s var(--ease-quint);
+}
+.pdp-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.pdp-thumb.is-active { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--terracotta); }
+
+/* Buy box */
+.pdp-buy { max-width: 460px; }
+.pdp-buy h1 {
+  font-size: clamp(2.2rem, 1.6rem + 2.4vw, 3.2rem);
+  color: var(--burgundy); margin-top: 0.6rem; line-height: 1.02;
+}
+.pdp-rating { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.7rem; color: var(--ink-soft); font-size: 0.9rem; }
+.pdp-rating:hover { color: var(--terracotta); }
+.pdp-stars { display: inline-flex; gap: 2px; }
+.pdp-buy__lead { color: var(--ink-soft); font-size: 1.0625rem; line-height: 1.6; margin-top: 1rem; }
+
+.pdp-price { display: flex; align-items: baseline; gap: 0.8rem; margin-top: 1.6rem; }
+.pdp-price__amount { font-family: var(--font-display); font-weight: 800; font-size: 2rem; color: var(--ink); }
+.pdp-price__terms { color: var(--ink-soft); font-size: 0.95rem; }
+
+.pdp-field { margin-top: 1.8rem; }
+.pdp-field__label {
+  font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em;
+  font-size: 0.72rem; color: var(--ink); margin-bottom: 0.7rem;
+}
+.pdp-swatches { display: flex; gap: 0.7rem; }
+.pdp-swatch {
+  width: 40px; height: 40px; border-radius: 50%; border: none; cursor: pointer;
+  box-shadow: inset 0 0 0 1px oklch(0 0 0 / 0.14);
+}
+.pdp-swatch.is-active { box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--terracotta); }
+
+.pdp-cartrow { display: flex; gap: 0.9rem; align-items: stretch; margin-top: 1.8rem; flex-wrap: wrap; }
+.pdp-qty {
+  display: flex; align-items: center; border: 1px solid var(--line);
+  border-radius: var(--r-pill); background: var(--surface-card); overflow: hidden;
+}
+.pdp-qty__btn { width: 44px; height: 48px; font-size: 1.3rem; color: var(--ink); background: transparent; border: none; cursor: pointer; }
+.pdp-qty__val { min-width: 28px; text-align: center; font-family: var(--font-display); font-weight: 700; font-size: 1.1rem; color: var(--ink); }
+.pdp-cartrow .btn { flex: 1; min-width: 200px; justify-content: center; }
+
+.pdp-trust { display: flex; flex-direction: column; gap: 0.7rem; margin-top: 2rem; padding-top: 1.6rem; border-top: 1px solid var(--line); }
+.pdp-trust__item { display: flex; align-items: center; gap: 0.7rem; color: var(--ink-soft); font-size: 0.95rem; }
+.pdp-trust__item svg { flex: 0 0 auto; }
+
+/* ============================================================
+   Jump guide
+   ============================================================ */
+.pdp-jump { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.pdp-jump__inner { display: flex; align-items: center; gap: 0.8rem 1.3rem; flex-wrap: wrap; padding-block: 1rem; }
+.pdp-jump__lead { font-family: var(--font-display); font-weight: 700; color: var(--burgundy); font-size: 1.05rem; }
+.pdp-jump__label { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.7rem; color: var(--ink-soft); }
+.pdp-jump__links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.pdp-jump__links a {
+  color: var(--ink); font-size: 0.88rem; padding: 0.4rem 0.9rem;
+  border: 1px solid var(--line); border-radius: var(--r-pill);
+  transition: border-color 0.2s var(--ease-quint), color 0.2s, background-color 0.2s;
+}
+.pdp-jump__links a:hover { border-color: var(--terracotta); color: var(--terracotta); background: color-mix(in oklch, var(--terracotta) 6%, transparent); }
+
+/* ============================================================
+   How it works
+   ============================================================ */
+.pdp-how__intro { max-width: 52ch; }
+.pdp-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 3rem; }
+.pdp-step {
+  text-align: left; cursor: pointer; padding: 1.4rem; border-radius: var(--r-lg);
+  background: var(--surface-card); border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm); transition: transform 0.25s var(--ease-quint), box-shadow 0.25s var(--ease-quint), border-color 0.25s;
+}
+.pdp-step:hover { transform: translateY(-3px); }
+.pdp-step.is-active { border: 2px solid var(--terracotta); box-shadow: var(--shadow-lg); }
+.pdp-step__num {
+  width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center;
+  font-family: var(--font-display); font-weight: 800; font-size: 1.1rem;
+  background: color-mix(in oklch, var(--terracotta) 14%, transparent); color: var(--terracotta);
+}
+.pdp-step.is-active .pdp-step__num { background: var(--terracotta); color: var(--cream); }
+.pdp-step h3 { font-weight: 700; font-size: 1.15rem; color: var(--burgundy); margin-top: 0.9rem; }
+.pdp-step p { color: var(--ink-soft); font-size: 0.9rem; margin-top: 0.4rem; line-height: 1.5; }
+
+.pdp-detail {
+  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.6rem, 1rem + 4vw, 3.5rem);
+  align-items: center; margin-top: 1.4rem; background: var(--surface-card);
+  border: 1px solid var(--line); border-radius: var(--r-xl);
+  padding: clamp(1.6rem, 1rem + 2vw, 2.6rem); box-shadow: var(--shadow-md);
+}
+.pdp-detail__step { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; color: var(--terracotta); }
+.pdp-detail h3 { font-weight: 800; font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2rem); color: var(--burgundy); margin-top: 0.6rem; line-height: 1.1; }
+.pdp-detail p { color: var(--ink-soft); font-size: 1.0625rem; line-height: 1.62; margin-top: 1rem; }
+.pdp-detail__media { border-radius: var(--r-lg); overflow: hidden; aspect-ratio: 4 / 3; background: var(--paper-3); box-shadow: var(--shadow-sm); }
+.pdp-detail__media img { width: 100%; height: 100%; object-fit: cover; }
+.pdp-how__note { color: var(--ink-soft); font-size: 0.95rem; margin-top: 1.8rem; max-width: 60ch; }
+
+/* ============================================================
+   Video band (charcoal)
+   ============================================================ */
+.pdp-video { position: relative; background: var(--charcoal); color: var(--cream); padding-block: var(--section-y); overflow: hidden; }
+.pdp-video::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(70% 90% at 50% -10%, color-mix(in oklch, var(--amber) 14%, transparent), transparent 60%);
+}
+.pdp-video__inner { position: relative; max-width: 960px; margin-inline: auto; padding-inline: var(--gutter); text-align: center; }
+.pdp-video .eyebrow { color: var(--amber); justify-content: center; }
+.pdp-video h2 { color: var(--cream); font-size: clamp(2rem, 1.4rem + 2.4vw, 3rem); margin: 1rem auto 0; max-width: 20ch; }
+.pdp-video__frame { position: relative; margin-top: 2.4rem; border-radius: var(--r-xl); overflow: hidden; aspect-ratio: 16 / 9; box-shadow: var(--shadow-lg); }
+.pdp-video__frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 42%; }
+.pdp-video__frame::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, oklch(0.16 0.02 45 / 0.5), oklch(0.16 0.02 45 / 0.15)); }
+.pdp-play {
+  position: absolute; inset: 0; margin: auto; width: 88px; height: 88px; border-radius: 50%;
+  background: var(--paper); border: none; cursor: pointer; display: grid; place-items: center;
+  box-shadow: var(--shadow-lg); z-index: 1; transition: transform 0.25s var(--ease-quint);
+}
+.pdp-play:hover { transform: scale(1.06); }
+.pdp-video__time {
+  position: absolute; bottom: 1rem; right: 1rem; z-index: 1;
+  font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--cream);
+  background: oklch(0.16 0.02 45 / 0.55); padding: 0.35rem 0.7rem; border-radius: var(--r-pill);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.pdp-video__caption { color: var(--cream-soft); font-size: 0.95rem; margin-top: 1.2rem; }
+
+/* ============================================================
+   Accordions (claims + FAQ) — native <details>, exclusive per group
+   ============================================================ */
+.pdp-accordion { margin-top: 2.2rem; }
+.pdp-claims .pdp-accordion { max-width: 840px; }
+.pdp-acc { border-bottom: 1px solid var(--line); }
+.pdp-acc > summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.15rem 0; }
+.pdp-acc > summary::-webkit-details-marker { display: none; }
+.pdp-acc__q { display: flex; align-items: center; gap: 0.75rem; font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--burgundy); }
+.pdp-acc__chev { transition: transform 0.3s var(--ease-quint); flex: 0 0 auto; }
+.pdp-acc[open] .pdp-acc__chev { transform: rotate(180deg); }
+.pdp-acc__a { color: var(--ink-soft); font-size: 1.0625rem; line-height: 1.62; padding: 0 2rem 1.3rem 2.15rem; margin: 0; }
+
+.pdp-claims h2 { max-width: 20ch; }
+
+/* FAQ two-column */
+.pdp-faq__grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(2rem, 1rem + 4vw, 4.5rem); align-items: start; }
+.pdp-faq__intro p { color: var(--ink-soft); font-size: 1.0625rem; line-height: 1.6; margin-top: 1rem; max-width: 32ch; }
+.pdp-faq__intro .link { margin-top: 1.6rem; }
+.pdp-faq .pdp-accordion { margin-top: 0; }
+.pdp-faq .pdp-acc > summary { padding: 1.35rem 0; }
+.pdp-faq .pdp-acc__q { font-size: 1.2rem; }
+.pdp-faq .pdp-acc__a { padding: 0 2.6rem 1.5rem 0; }
+
+/* ============================================================
+   Full specifications
+   ============================================================ */
+.pdp-specs h2 { max-width: 18ch; }
+.pdp-specs__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(1.6rem, 1rem + 2vw, 3rem); margin-top: 2.8rem; }
+.pdp-specgroup h3 { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.72rem; color: var(--terracotta); margin: 0 0 0.4rem; }
+.pdp-specgroup dl { margin: 0; }
+.pdp-specrow { display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line); }
+.pdp-specrow dt { color: var(--ink-soft); font-size: 0.95rem; }
+.pdp-specrow dd { color: var(--ink); font-size: 0.95rem; font-weight: 500; text-align: right; margin: 0; }
+
+.pdp-box {
+  margin-top: clamp(2.5rem, 1.5rem + 3vw, 4rem); background: var(--surface-card);
+  border: 1px solid var(--line); border-radius: var(--r-xl);
+  padding: clamp(1.6rem, 1rem + 2vw, 2.6rem); box-shadow: var(--shadow-sm);
+}
+.pdp-box h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; color: var(--burgundy); margin: 0; }
+.pdp-box__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.6rem 2rem; margin-top: 1.2rem; }
+.pdp-box__item { display: flex; align-items: center; gap: 0.6rem; color: var(--ink-soft); font-size: 0.98rem; }
+.pdp-box__item::before { content: "\2014"; color: var(--terracotta); }
+
+/* ============================================================
+   Reviews
+   ============================================================ */
+.pdp-reviews__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+.pdp-reviews__head-l { max-width: 30ch; }
+.pdp-score { text-align: right; }
+.pdp-score__num { font-family: var(--font-display); font-weight: 800; font-size: 3rem; color: var(--burgundy); line-height: 1; }
+.pdp-score__stars { display: inline-flex; gap: 2px; margin-top: 0.4rem; }
+.pdp-score__count { color: var(--ink-soft); font-size: 0.9rem; margin-top: 0.4rem; }
+.pdp-reviewgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem; margin-top: 3rem; }
+.pdp-review { background: var(--surface-card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 1.8rem; box-shadow: var(--shadow-md); margin: 0; display: flex; flex-direction: column; }
+.pdp-review blockquote { font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; color: var(--ink); line-height: 1.4; margin: 1rem 0 0; flex: 1; }
+.pdp-review figcaption { color: var(--ink-soft); font-size: 0.9rem; margin-top: 1.2rem; }
+
+/* ============================================================
+   Bundles
+   ============================================================ */
+.pdp-bundles__intro { max-width: 44ch; }
+.pdp-bundlegrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem; margin-top: 3rem; align-items: stretch; }
+.pdp-bundle {
+  background: var(--surface-card); border: 1px solid var(--line); border-radius: var(--r-lg);
+  padding: 2rem; box-shadow: var(--shadow-md); display: flex; flex-direction: column; position: relative;
+}
+.pdp-bundle--featured { border: 2px solid var(--terracotta); box-shadow: var(--shadow-lg); }
+.pdp-bundle h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; color: var(--burgundy); }
+.pdp-bundle p { color: var(--ink-soft); margin-top: 0.6rem; line-height: 1.6; flex: 1; }
+.pdp-bundle__pricerow { display: flex; align-items: baseline; gap: 0.6rem; margin-top: 1.2rem; }
+.pdp-bundle__price { font-family: var(--font-display); font-weight: 800; font-size: 1.8rem; color: var(--ink); }
+.pdp-bundle__was { color: var(--ink-soft); font-size: 0.9rem; text-decoration: line-through; }
+.pdp-bundle__save { color: var(--ink-soft); font-size: 0.9rem; }
+.pdp-bundle .btn { margin-top: 1.2rem; width: 100%; justify-content: center; }
+.pdp-badge {
+  position: absolute; top: -0.8rem; left: 2rem;
+  background: var(--burgundy); color: var(--cream);
+  font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em;
+  font-size: 0.62rem; font-weight: 600; padding: 0.42rem 0.75rem; border-radius: var(--r-pill);
+}
+
+/* ============================================================
+   Pairs well with — reuses the shared .card
+   ============================================================ */
+.pdp-pairs__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(258px, 1fr)); gap: 1.8rem; margin-top: 3rem; }
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 900px) {
+  .pdp-layout { grid-template-columns: 1fr; }
+  .pdp-buy { max-width: none; }
+  .pdp-detail { grid-template-columns: 1fr; }
+  .pdp-detail__media { order: -1; }
+  .pdp-faq__grid { grid-template-columns: 1fr; }
+  .pdp-reviews__head { align-items: flex-start; }
+  .pdp-score { text-align: left; }
+}

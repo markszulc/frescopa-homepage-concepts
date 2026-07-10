@@ -23,12 +23,20 @@ a sibling `shared/` or `assets/` folder elsewhere.
 
 ```
 frescopa-craft-current/
-├── index.html
+├── index.html         # homepage — "Every morning, perfected."
+├── atelier.html       # Atelier product detail page (PDP)
 ├── craft.css
+├── pdp.css            # PDP-only layout, additive; reuses the shared tokens + craft.css
+├── pdp.js             # PDP interactions (gallery, finish, quantity, add-to-cart, step switcher)
 ├── server.mjs
 ├── shared/            # design system (tokens, reveal/header/nav/calendar JS, Flavour DNA)
 └── assets/            # only the images, logo, and video this direction actually uses
 ```
+
+The Atelier PDP keeps every section from the "customer journey" design export
+(gallery, buy box, how-it-works, specifications, Flavour DNA, reviews, FAQ,
+bundles) but is rebuilt entirely on this direction's own tokens and primitives,
+so it reads as one system with `index.html`.
 
 ## Notes
 
